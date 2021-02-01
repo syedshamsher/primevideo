@@ -1,11 +1,15 @@
-import React from 'react'
-import { Route } from 'react-router-dom'
-import { Nav } from '../Components/Nav/Nav'
+import React from "react";
+import { Switch, Route } from "react-router-dom";
+import { Login } from "../Pages/Login/Login";
+import { Register } from "../Pages/Register/Register";
 
 export const Routes = () => {
-    return (
-        <div>
-            <Route to="/" render={() => <Nav/> } />
-        </div>
-    )
-}
+  return (
+    <div>
+      <Switch>
+        <Route path="/login" render={() => <Login />} />
+        <Route path="/register" render={() => <Register />} />
+      </Switch>
+    </div>
+  );
+};
