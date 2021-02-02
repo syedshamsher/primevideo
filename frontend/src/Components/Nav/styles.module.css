@@ -80,7 +80,7 @@ hr {
     z-index: 1;
     height: 248px;
     font-size: 12px;
-    justify-content: space-evenly;
+    justify-content: space-between;
     background: #252e39;
     box-shadow: 0 4px 8px #000;
 }
@@ -95,12 +95,16 @@ hr {
     display: flex;
     flex-direction: column;
     text-align: left;
+    margin-right: 20%;
 }
 
 .subnav_left_wrapper {
     display: flex;
     flex-direction: column;
     text-align: left;
+    margin-left: 10%;
+    padding-right: 10%;
+    border-right: 1px solid #8197a4;
 }
 
 .subnav_left_wrapper > a {

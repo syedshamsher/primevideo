@@ -9,19 +9,21 @@ import { Search } from "../Search/Search";
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
-    maxHeight: "72px",
-    backgroundColor: "#1A242F",
-    width: "100%",
-    display: "flex",
-    flexWrap: "wrap",
-    justifyContent: "center",
-    position: "sticky",
+      maxHeight: '72px',
+      backgroundColor: '#1A242F',
+      width: '100%',
+      display: 'flex',
+      flexWrap: 'wrap',
+      justifyContent: 'center',
+      position: 'fixed',
+      top: 0,
+      bottom: '20%'
   },
   toolbar: {
-    display: "flex",
-    flexWrap: "wrap",
-    alignItems: "center",
-    justifyContent: "space-between",
+      display: 'flex',
+      flexWrap: 'wrap',
+      alignItems: 'center',
+      justifyContent: 'space-between',
   },
   homeIcon: {
     color: "white",
@@ -213,6 +215,9 @@ export function Nav() {
           </div>
         </Toolbar>
       </AppBar>
+      <Toolbar>
+        
+      </Toolbar>
     </div>
   );
 }
