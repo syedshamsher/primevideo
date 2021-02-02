@@ -12,7 +12,7 @@
     font-weight: 200;
 }
 .input_wrapper{
-    margin-bottom: 25px;
+    /* margin-bottom: 25px; */
 }
 .label{
     font-family: "Amazon Ember",Arial,sans-serif;
@@ -58,11 +58,7 @@
     margin-bottom:20px;
 }
 
-.form_footer{
-    border-top: 1px solid gray;
-    position: relative;
-    /* width: ; */
-}
+
 
 .footer_heading{
     text-align: center;
@@ -78,4 +74,27 @@
     border-radius: 2px;
     margin-bottom: 20px;
     cursor: pointer;
+}
+
+.footer_heading{
+    width: 100%;
+    display: flex; 
+    flex-direction: row; 
+    position: relative;
+    place-items: center;
+    font-size: 12px;
+    top:-14.5px;
+    text-align: center;
+}
+.footer_heading::after{
+    border-bottom: 1px solid black;
+    content: '';
+    margin-left: 7px;
+    flex: 1; 
+}
+.footer_heading::before{
+    border-bottom: 1px solid black;
+    content: '';
+    margin-right: 7px;
+    flex: 1 ; 
 }

@@ -7,7 +7,7 @@ const LoginRegister = (props) => {
     <Box className={styles.wrapper_container}>
       <Grid container>
         <Grid item xs></Grid>
-        <Grid item xs={10} sm={6} md={4} lg={2}>
+        <Grid item xs={10} sm={5} md={3} lg={2}>
           <Box className={styles.img_container}>
             <img src="./images/logo.png" width="150" height="47" alt="" />
           </Box>
@@ -24,13 +24,13 @@ const LoginRegister = (props) => {
           <div className={styles.footer}>
             <ul>
               <li>
-                <a href="#">Conditins of use</a>
+                <a href="/login">Conditins of use</a>
               </li>
               <li>
-                <a href="#">Privacy Notice</a>
+                <a href="/login">Privacy Notice</a>
               </li>
               <li>
-                <a href="#">Help</a>
+                <a href="/login">Help</a>
               </li>
             </ul>
           </div>
