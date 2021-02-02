@@ -1,0 +1,6 @@
+export const ORDER_REQUEST='ORDER_REQUEST'
+export const ORDER_FAILURE='ORDER_FAILURE'
+export const ORDER_SUCCESS='ORDER_SUCCESS'
+export const ADD_ORDER='ADD_ORDER'
+
+
