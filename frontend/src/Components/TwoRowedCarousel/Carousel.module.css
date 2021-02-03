@@ -1,0 +1,32 @@
+.Slide{
+    
+    transition:  250ms all;
+    color:red;
+    position: absolute;
+    
+    
+  }
+  .hidden {
+    display:none;
+    color:khaki !important;
+    
+  }
+  
+  .Slide:hover {
+    transform:scale(1.1) !important;
+    /* width: 300px !important;
+    height: 400px !important; */
+    color:blue !important;
+    z-index: 1000;
+    
+
+    
+  }
+
+ .Slide:hover .hidden{
+   display:block !important ;
+   background: linear-gradient(180deg, rgba(252,176,69,0) 0%, rgba(28,38,48,0.989233193277311) 4%, rgba(28,38,48,1) 100%) !important;
+   transform:scale(1.1) !important
+ }
+
+  

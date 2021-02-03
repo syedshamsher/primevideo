@@ -23,7 +23,7 @@ const ViewMedia = () => {
     React.useEffect(() => {
         console.log("Calling")
         dispatch(fetchMedia(id))
-    }, [])
+    }, [id])
 
     const handleClick=()=>{
         history.push(`/player/song2`)        
@@ -35,7 +35,7 @@ const ViewMedia = () => {
     if (isLoading ) return <div>Loading...</div> 
     else return (
         <>
-       {media.media_type=="movie" && <div style={{backgroundColor:"#0F171E", width:"100%", height:"100%", marginTop:"5px", padding:"4%", color:"white"}}>
+       { <div style={{backgroundColor:"#0F171E", width:"100%", height:"100%", marginTop:"5px", padding:"4%", color:"white"}}>
            <div style={{backgroundColor:"#0F171E", maxWidth:"80%", height:"100%"}}>
                <div style={{fontSize:"30px", color:"white"}}>{media.original_title}</div>
                <div style={{display:'flex', width:"300px", justifyContent:"space-between", marginTop:"15px",alignItems:"center"}}>
@@ -53,7 +53,7 @@ const ViewMedia = () => {
                    <div><PlayArrowOutlined fontSize="large" />See the Teaser</div>
                    <div>Add to Favourites</div>
                    <div><GetAppIcon fontSize="large" />Download</div>
-                   {/* <div style={{background: "linear-gradient(to right, transparent, "#0F171E"),url(`${media.backdrop_path}`)"}}></div> */}
+                   {/* <div style={{background: "linear-gradient(to left, transparent, "#0F171E"),url(`${media.backdrop_path}`)"}}></div> */}
                </div>
                </div>
        </div>}

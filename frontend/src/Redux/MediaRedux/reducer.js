@@ -27,7 +27,7 @@ export const mediasReducer = (state = initialState, { type, payload }) => {
         case FETCH_ALL_MEDIAS_SUCCESS:
             const media1 = [...payload].sort((a, b) => b.vote_average - a.vote_average)
             const media2 = [...media1]
-            media1.length = 10
+            media1.length = 20
             media2.length = 24
 
             return {

@@ -90,7 +90,7 @@ export const fetchMedia = (id) => dispatch => {
             dispatch(fetchMediaSuccess(res.data))
             axios({
                 method: 'get',
-                url: `https://api.themoviedb.org/3/movie/${res.data.id}/credits?api_key=3da864401bca9475486c35cc206b3e2a&language=en-US`
+                url: `https://api.themoviedb.org/3/${res.data.media_type}/${res.data.id}/credits?api_key=3da864401bca9475486c35cc206b3e2a&language=en-US`
             }).then((resp) => {
                 console.log(resp.data)
                 dispatch(fetchMediaSuccess2(resp.data))
