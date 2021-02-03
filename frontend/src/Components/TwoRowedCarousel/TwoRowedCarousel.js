@@ -18,20 +18,7 @@ export const TwoRowedCarousel = () => {
   const dispatch = useDispatch();
 
   const handleAdd = (mediaId) => {
-    console.log(mediaId);
-    let count = 0;
-    let newList = watchlist.filter((id) => {
-      if (id === mediaId) {
-        count += 1;
-      } else {
-        return id;
-      }
-    });
-
-    if (count == 0) {
-      newList.push(mediaId);
-    }
-    dispatch(newWatchList({ watchlist: newList, id: userdata._id }));
+    dispatch(newWatchList({ mediaId: mediaId, id: userdata._id }));
   };
 
   return (

@@ -58,52 +58,12 @@ const getFavMedia = async (req, res) => {
   }
 };
 
-// const addProducts=(req, res) => {
-//     const name = req.body.name
-//     const brand = req.body.brand
-//     const category = req.body.category
-//     const description = req.body.description
-//     const mrp = req.body.mrp
-//     const mdp = req.body.mdp
-//     const offer = req.body.offer
-//     const availability = req.body.availability
-//     const product_rating = req.body.product_rating
-//     const product_specifications = req.body.product_specifications
-//     const image = req.body.image
-//     const newProduct = new Products({name,brand,category,description,mrp,offer,mdp,offer,availability,product_rating,product_specifications,image})
-//     newProduct.save()
-//         .then(() => res.json("Product Added Successfully"))
-//         .catch((err) => res.status(400).json("Error: " + err))
-// }
+const searchResult = (req, res) => {
+  // console.log(req.body);
+  let query = req.body.query;
+  Medias.find({ title: { $regex: query, $options: "$i" } }).then((data) => {
+    res.status(200).send(data);
+  });
+};
 
-// const editProducts= (req, res) => {
-//     console.log(req.body.brand)
-//     const id = req.params.id
-//     Products.findById(id).then((product) => {
-//         console.log(product)
-//         product.name = req.body.name
-//         product.brand = req.body.brand
-//         product.category = req.body.category
-//         product.description = req.body.description
-//         product.mrp = req.body.mrp
-//         product.mdp = req.body.mdp
-//         product.offer = req.body.offer
-//         product.availability = req.body.availability
-//         product.product_rating = req.body.product_rating
-//         product.product_specifications = req.body.product_specifications
-//         product.image = req.body.image
-//         product.save()
-//             .then(() => res.json(product))
-//             .catch((err) => res.status(400).json("Error: " + err))
-//     }).catch((err) => res.status(404).json("Product not Found"))
-// }
-
-// const deleteProducts=(req, res) => {
-//     const id = req.params.id
-//     Products.findByIdAndDelete(id)
-//         .then(() => res.status(200).json({ message: "Product deleted successfully" }))
-//         .catch((err) => res.status(404).json({ message: "Product not found" }))
-
-// }
-
-module.exports = { getAllMedia, getMedia, getFavMedia };
+module.exports = { getAllMedia, getMedia, getFavMedia, searchResult };

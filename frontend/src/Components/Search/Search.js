@@ -1,17 +1,17 @@
-import styles from './styles.module.css';
+import styles from "./styles.module.css";
 
-export const Search = ({query, setQuery, queryHandler}) => {
+export const Search = ({ query, setQuery, queryHandler }) => {
   return (
     <input
       id={styles.input}
-      type='text'
-      aria-label='Search'
-      placeholder='Search'
+      type="text"
+      aria-label="Search"
+      placeholder="Search"
       value={query}
       name="query"
       onKeyDown={(e) => {
-        if (e.key === 'Escape') e.target.blur();
-        if (e.key === 'Enter') queryHandler(e);
+        if (e.key === "Escape") e.target.blur();
+        if (e.key === "Enter") queryHandler(e);
       }}
       onClick={(e) => {
         e.target.select();

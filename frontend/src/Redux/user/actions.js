@@ -191,7 +191,7 @@ export const newWatchList = (payload) => (dispatch) => {
 
   axios(config)
     .then(function (response) {
-      dispatch(updateWatchList(payload.watchlist));
+      dispatch(updateWatchList(response.data));
     })
     .catch(function (error) {
       console.log(error);

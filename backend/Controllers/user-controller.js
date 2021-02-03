@@ -67,32 +67,6 @@ const editUser = (req, res) => {
     .catch((err) => res.status(404).json("Student not Found"));
 };
 
-// const orderAdd = (req, res) => {
-//     const id = req.params.id
-//     console.log(req.body)
-//     Users.findById(id).then((user) => {
-//         user.name = user.name
-//         user.mobile = user.mobile
-//         user.email = user.email
-//         user.password = user.password
-//         user.type = user.type
-//         user.orders = [...user.orders,req.body]
-//         user.returns = []
-
-//         user.save()
-//             .then(() => res.json("Order Added Successfully"))
-//             .catch((err) => res.status(400).json("Error: " + err))
-//     }).catch((err) => res.status(404).json("User not Found"))
-// }
-
-// const deleteUser = (req, res) => {
-//     const id = req.params.id
-//     Students.findByIdAndDelete(id)
-//         .then(() => res.status(200).json({ message: "student deleted successfully" }))
-//         .catch((err) => res.status(404).json({ message: "student not found" }))
-
-// }
-
 const userLogin = async (req, res, next) => {
   console.log("asdas", req.body);
   const email = req.body.email;
@@ -122,13 +96,40 @@ const userLogin = async (req, res, next) => {
   res.status(200).send({ accesstoken: accesstoken });
 };
 
-const updateFavList = (req, res) => {
+const updateFavList = async (req, res) => {
   console.log(req.body);
   let id = req.body.id;
-  let list = req.body.watchlist;
-  Users.findOneAndUpdate({ _id: id }, { fav: list }).then((data) =>
-    res.status(200).json(data),
-  );
+  let mediaId = req.body.mediaId;
+  await Users.findOne({ _id: id }, { fav: 1, _id: 0 }).then((data) => {
+    let count = 0;
+    let temp = data.fav.filter((el) => {
+      console.log("el", el);
+      if (el == mediaId) {
+        count += 1;
+      } else {
+        return el;
+      }
+    });
+    console.log("count", count);
+    if (count == 0) {
+      temp.push(mediaId);
+    }
+    // Users.findOneAndUpdate({ _id: id }, { fav: temp }).then((data) =>
+    //   res.status(200).json(data.fav),
+    // );
+
+    console.log("temp", temp);
+    res.status(200).send(temp);
+  });
 };
 
 module.exports = { getUser, addUser, editUser, userLogin, updateFavList };
+
+// const updateFavList = (req, res) => {
+//   console.log(req.body);
+//   let id = req.body.id;
+//   let list = req.body.watchlist;
+//   Users.findOneAndUpdate({ _id: id }, { fav: list }).then((data) =>
+//     res.status(200).json(data),
+//   );
+// };
