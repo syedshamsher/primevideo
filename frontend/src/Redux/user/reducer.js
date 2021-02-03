@@ -8,6 +8,7 @@ import {
   LOGOUT,
   LOCATION_SUCCESS,
   SET_REGISTER,
+  ADD_WATCHLIST,
 } from "./actionTypes";
 
 const initState = {
@@ -19,10 +20,11 @@ const initState = {
   userType: "user",
   location: null,
   registerd: false,
+  watchlist: [],
 };
 
 export const authReducer = (state = initState, { type, payload }) => {
-  console.log("type", type, payload);
+  // console.log("type", type, payload);
   switch (type) {
     case LOGIN_REQUEST: {
       return {
@@ -40,6 +42,7 @@ export const authReducer = (state = initState, { type, payload }) => {
         userType: payload.type,
         userdata: payload,
         error: null,
+        watchlist: payload.fav,
       };
     }
 
@@ -84,6 +87,8 @@ export const authReducer = (state = initState, { type, payload }) => {
         ...state,
         isAuth: false,
         userType: "user",
+        userdata: "",
+        watchlist: [],
       };
     }
 
@@ -98,6 +103,12 @@ export const authReducer = (state = initState, { type, payload }) => {
       return {
         ...state,
         registered: payload,
+      };
+    }
+    case ADD_WATCHLIST: {
+      return {
+        ...state,
+        watchlist: payload,
       };
     }
 

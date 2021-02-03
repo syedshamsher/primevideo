@@ -6,24 +6,25 @@ import ArrowDropUpIcon from "@material-ui/icons/ArrowDropUp";
 import { NavLink } from "react-router-dom";
 import styles from "./styles.module.css";
 import { Search } from "../Search/Search";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
-      maxHeight: '72px',
-      backgroundColor: '#1A242F',
-      width: '100%',
-      display: 'flex',
-      flexWrap: 'wrap',
-      justifyContent: 'center',
-      position: 'fixed',
-      top: 0,
-      bottom: '20%'
+    maxHeight: "72px",
+    backgroundColor: "#1A242F",
+    width: "100%",
+    display: "flex",
+    flexWrap: "wrap",
+    justifyContent: "center",
+    position: "fixed",
+    top: 0,
+    bottom: "20%",
   },
   toolbar: {
-      display: 'flex',
-      flexWrap: 'wrap',
-      alignItems: 'center',
-      justifyContent: 'space-between',
+    display: "flex",
+    flexWrap: "wrap",
+    alignItems: "center",
+    justifyContent: "space-between",
   },
   homeIcon: {
     color: "white",
@@ -42,6 +43,7 @@ export function Nav() {
   const [query, setQuery] = React.useState("");
   const [open, setOpen] = React.useState(false);
   const [openNavLink, setOpenNavLink] = React.useState(false);
+  const history = useHistory();
 
   const handleClick = () => {
     setOpen((prev) => !prev);
@@ -60,6 +62,8 @@ export function Nav() {
   };
 
   const queryHandler = (e) => {
+    history.push(`/search?q=${query}`);
+    setQuery("");
     // dispatch something on pressing enter (no clicks required)
   };
 
@@ -215,9 +219,7 @@ export function Nav() {
           </div>
         </Toolbar>
       </AppBar>
-      <Toolbar>
-        
-      </Toolbar>
+      <Toolbar></Toolbar>
     </div>
   );
 }

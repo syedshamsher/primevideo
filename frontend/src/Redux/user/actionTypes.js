@@ -8,3 +8,4 @@ export const LOGOUT = "LOGOUT";
 export const LOCATION_SUCCESS = "LOCATION_SUCCESS";
 export const LOCATION_FAILURE = "LOCATION_FAILURE";
 export const SET_REGISTER = "SET_REGISTER";
+export const ADD_WATCHLIST = "ADD_WATCHLIST";
