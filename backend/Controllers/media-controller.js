@@ -15,6 +15,22 @@ const getAllMedia = async (req, res) => {
       return res.send(JSON.parse(reply));
     }
 
+}
+
+const getMedia=(req, res) => {
+    const id = req.params.id
+    console.log(req.params.id)
+    Medias.findById(id)
+    .then((media) => {
+        console.log(media)
+        return(
+            res.json(media)
+        )
+    })
+    .catch((err) => res.status(404).json("Media not Found"))
+}
+
+
     const response = await Medias.find();
     const saveResult = await SET_ASYNC(
       "medias",

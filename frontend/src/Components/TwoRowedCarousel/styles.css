@@ -1,4 +1,4 @@
-:root {
+/* :root {
   --swiper-theme-color: white;
 }
 
@@ -31,7 +31,6 @@ body {
   background: #fff;
   height: calc((100% - 30px) / 2);
 
-  /* Center slide text vertically */
   display: -webkit-box;
   display: -ms-flexbox;
   display: -webkit-flex;
@@ -57,9 +56,11 @@ body {
 .swiper-button-prev:hover {
   color: white;
   background: rgba(0, 0, 0, 0.5);
+  
 }
 
 .swiper-button-next:hover {
   color: white;
   background: rgba(0, 0, 0, 0.5);
 }
+ */
