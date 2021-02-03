@@ -45,7 +45,12 @@ app.get("/video/:name", function (req, res) {
 
 mongoose.connect(
   process.env.MONGO_ATLAS_URI,
-  { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true },
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+    // useFindAndModify: false,
+  },
   (err) => {
     if (err) {
       console.log("Error  connecting the database");

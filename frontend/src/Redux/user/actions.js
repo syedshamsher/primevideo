@@ -9,6 +9,7 @@ import {
   LOCATION_SUCCESS,
   LOCATION_FAILURE,
   SET_REGISTER,
+  ADD_WATCHLIST,
 } from "./actionTypes";
 import axios from "axios";
 const loginRequest = (uname, pass) => {
@@ -75,6 +76,13 @@ export const setRegister = (payload) => {
   return {
     type: SET_REGISTER,
     payload: payload,
+  };
+};
+
+export const updateWatchList = (payload) => {
+  return {
+    type: ADD_WATCHLIST,
+    payload,
   };
 };
 
@@ -168,5 +176,24 @@ export const addOrder = (id, payload) => (dispatch) => {
     })
     .catch((res) => {
       console.log("error", res.response.data);
+    });
+};
+
+export const newWatchList = (payload) => (dispatch) => {
+  var config = {
+    method: "put",
+    url: "http://localhost:8001/api/add_watchlist",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    data: payload,
+  };
+
+  axios(config)
+    .then(function (response) {
+      dispatch(updateWatchList(payload.watchlist));
+    })
+    .catch(function (error) {
+      console.log(error);
     });
 };
