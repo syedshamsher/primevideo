@@ -6,12 +6,15 @@ import { Register } from "../Pages/Register/Register";
 import { Nav } from "../Components/Nav";
 import  ViewMedia  from "../Pages/View/ViewMedia";
 import MediaPlayer from "../Pages/MediaPlayer/MediaPlayer";
+import { LandingNav } from "../Components/LandingNav/LandingNav";
+import { LandingPage } from "../Pages/LandingPage/LandingPage";
 
 export const Routes = () => {
   return (
     <div>
-      <Route path="/" render={() => <Nav />} />
+        <Route path="/" render={() => <Nav />} />
       <Switch>
+        <Route path="/prime" exact render={() => <LandingPage />} />
         <Route path="/" exact render={() => <Feed />} />
         <Route path="/login" exact render={() => <Login />} />
         <Route path="/register" exact render={() => <Register />} />

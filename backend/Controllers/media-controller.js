@@ -27,8 +27,14 @@ const getAllMedia=async(req, res) => {
 
 const getMedia=(req, res) => {
     const id = req.params.id
+    console.log(req.params.id)
     Medias.findById(id)
-    .then((media) => {res.json(media)})
+    .then((media) => {
+        console.log(media)
+        return(
+            res.json(media)
+        )
+    })
     .catch((err) => res.status(404).json("Media not Found"))
 }
 
