@@ -4,7 +4,7 @@ import { Login } from "../Pages/Login/Login";
 import { Feed } from "../Pages/Feed/Feed";
 import { Register } from "../Pages/Register/Register";
 import { Nav } from "../Components/Nav";
-import  ViewMedia  from "../Pages/ViewMedia";
+import  ViewMedia  from "../Pages/View/ViewMedia";
 import MediaPlayer from "../Pages/MediaPlayer/MediaPlayer";
 
 export const Routes = () => {

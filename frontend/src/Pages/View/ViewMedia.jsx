@@ -3,7 +3,7 @@ import { useSelector } from "react-redux"
 import { useDispatch } from "react-redux"
 import { useParams } from "react-router-dom"
 import { useHistory } from "react-router-dom"
-import { fetchMedia } from '../Redux/MediaRedux/actions'
+import { fetchMedia } from '../../Redux/MediaRedux/actions'
 import PlayCircleFilledWhiteIcon from '@material-ui/icons/PlayCircleFilledWhite';
 import PlayArrowOutlinedIcon from '@material-ui/icons/PlayArrowOutlined';
 import PlayArrowOutlined from '@material-ui/icons/PlayArrowOutlined'
