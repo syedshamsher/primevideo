@@ -3,6 +3,7 @@ import { useSelector } from "react-redux"
 import { useDispatch } from "react-redux"
 import { useParams } from "react-router-dom"
 import { useHistory } from "react-router-dom"
+
 import PlayArrowOutlined from '@material-ui/icons/PlayArrowOutlined'
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
 import ShareIcon from '@material-ui/icons/Share';
@@ -11,6 +12,7 @@ import SpeakerNotesIcon from '@material-ui/icons/SpeakerNotes';
 import GetAppIcon from '@material-ui/icons/GetApp';
 import { fetchMedia } from '../../Redux/MediaRedux/actions'
 import styles from './styles.module.css'
+
 
 const ViewMedia = () => {
     const { id } = useParams()
@@ -26,7 +28,8 @@ const ViewMedia = () => {
     React.useEffect(() => {
         console.log("Calling")
         dispatch(fetchMedia(id))
-    }, [])
+    }, [id])
+
 
     const handleClick=()=>{
         history.push(`/player/song2`)        
@@ -35,9 +38,11 @@ const ViewMedia = () => {
     let bannerPath = media.media_type === "movie" && media?.backdrop_path.split("/")
     let bannerUrl = `https://image.tmdb.org/t/p/original/${bannerPath[bannerPath.length-1]}`
 
+
     if (isLoading ) return <div>Loading...</div> 
     else return (
         <>
+
          {/* for series */}
        { media.media_type=="series" && 
                 <div>
@@ -261,6 +266,7 @@ const ViewMedia = () => {
                     </div>
                 </div>
         }
+
        </>
     )
 }
