@@ -15,8 +15,6 @@ const getAllMedia = async (req, res) => {
       return res.send(JSON.parse(reply));
     }
 
-}
-
 const getMedia=(req, res) => {
     const id = req.params.id
     console.log(req.params.id)

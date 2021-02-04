@@ -3,7 +3,6 @@ import { Switch, Route } from "react-router-dom";
 import { Login } from "../Pages/Login/Login";
 import { Feed } from "../Pages/Feed/Feed";
 import { Register } from "../Pages/Register/Register";
-import { Feed } from "../Pages/Feed/Feed";
 import { Nav } from "../Components/Nav";
 import { SearchResult } from "../Pages/SearchResult/SearchResult";
 import  ViewMedia  from "../Pages/View/ViewMedia";
