@@ -49,23 +49,23 @@ const addUser = async (req, res, next) => {
     .catch((err) => res.status(400).json("Error: " + err));
 };
 
-const editUser = (req, res) => {
-  const id = req.params.id;
-  Students.findById(id)
-    .then((student) => {
-      student.name = req.body.name;
-      student.age = req.body.age;
-      student.city = req.body.city;
-      student.gender = req.body.gender;
-      student.blood_group = req.body.blood_group;
+// const editUser = (req, res) => {
+//   const id = req.params.id;
+//   Students.findById(id)
+//     .then((student) => {
+//       student.name = req.body.name;
+//       student.age = req.body.age;
+//       student.city = req.body.city;
+//       student.gender = req.body.gender;
+//       student.blood_group = req.body.blood_group;
 
-      student
-        .save()
-        .then(() => res.json("Student Updated Successfully"))
-        .catch((err) => res.status(400).json("Error: " + err));
-    })
-    .catch((err) => res.status(404).json("Student not Found"));
-};
+//       student
+//         .save()
+//         .then(() => res.json("Student Updated Successfully"))
+//         .catch((err) => res.status(400).json("Error: " + err));
+//     })
+//     .catch((err) => res.status(404).json("Student not Found"));
+// };
 
 const userLogin = async (req, res, next) => {
   console.log("asdas", req.body);
@@ -97,33 +97,34 @@ const userLogin = async (req, res, next) => {
 };
 
 const updateFavList = async (req, res) => {
-  console.log(req.body);
+  // console.log(req.body);
   let id = req.body.id;
   let mediaId = req.body.mediaId;
+  let temp = [];
   await Users.findOne({ _id: id }, { fav: 1, _id: 0 }).then((data) => {
-    let count = 0;
-    let temp = data.fav.filter((el) => {
-      console.log("el", el);
-      if (el == mediaId) {
-        count += 1;
-      } else {
-        return el;
-      }
-    });
-    console.log("count", count);
-    if (count == 0) {
-      temp.push(mediaId);
-    }
-    // Users.findOneAndUpdate({ _id: id }, { fav: temp }).then((data) =>
-    //   res.status(200).json(data.fav),
-    // );
-
-    console.log("temp", temp);
-    res.status(200).send(temp);
+    // console.log(data.fav);
+    temp = data.fav;
   });
+  let count = 0;
+  temp = temp.filter((el) => {
+    // console.log("el", el);
+    if (el == mediaId) {
+      count += 1;
+    } else {
+      return el;
+    }
+  });
+  console.log("count", count);
+  if (count == 0) {
+    temp.push(mediaId);
+  }
+  console.log("temp", temp);
+  Users.findOneAndUpdate({ _id: id }, { fav: temp }).then((data) =>
+    res.status(200).json(data.fav),
+  );
 };
 
-module.exports = { getUser, addUser, editUser, userLogin, updateFavList };
+module.exports = { getUser, addUser, userLogin, updateFavList };
 
 // const updateFavList = (req, res) => {
 //   console.log(req.body);

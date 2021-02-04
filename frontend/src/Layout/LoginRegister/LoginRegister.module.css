@@ -8,6 +8,7 @@
     font-family: "Amazon Ember",Arial,sans-serif;
     justify-items: center;
     align-items: center;
+    background-color: white;
 }
 .wrapper_container a{
     outline: none;
