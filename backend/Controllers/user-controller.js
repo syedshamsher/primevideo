@@ -124,7 +124,14 @@ const updateFavList = async (req, res) => {
   );
 };
 
-module.exports = { getUser, addUser, userLogin, updateFavList };
+const getUserById = (req, res) => {
+  const id = req.body.id;
+  Users.find({ _id: id }).then((data) => {
+    res.status(200).send(data);
+  });
+};
+
+module.exports = { getUser, addUser, userLogin, updateFavList, getUserById };
 
 // const updateFavList = (req, res) => {
 //   console.log(req.body);
