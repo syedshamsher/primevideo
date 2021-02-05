@@ -3,6 +3,7 @@
 
 .wrapper_container{
     padding-top: 1.25rem;
+    background-color: white;
     display: flex;
     flex-direction: column;
     font-family: "Amazon Ember",Arial,sans-serif;

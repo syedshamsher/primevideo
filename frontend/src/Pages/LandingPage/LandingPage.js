@@ -2,6 +2,7 @@ import React from 'react'
 import styles from './styles.module.css'
 import {Container, Grid} from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
+import {LandingNav} from '../../Components/LandingNav/LandingNav'
 
 const useStyles = makeStyles({
     root : {
@@ -20,6 +21,7 @@ const LandingPage = () => {
 
     return (
                 <div className={styles.wrapper}>
+                    <LandingNav/>
                     <header
                         className={styles.banner}
                         style={{
@@ -38,7 +40,7 @@ const LandingPage = () => {
                                 <p className={styles.description} >
                                     Join Prime to watch the latest movies, TV shows and award-winning Amazon Originals
                                 </p>
-                                <button>Start your 30-day free trial</button>
+                                <button className={styles.landing_btn}>Start your 30-day free trial</button>
                             </div>
                             <div style={{flex:'1'}}> {` `} </div>
                         </div>
@@ -62,7 +64,7 @@ const LandingPage = () => {
                                 <p className={styles.description} style={{width: '90%'}} >
                                     With your Prime membership, you have access to exclusive Amazon Originals, blockbuster Bollywood movies, regional movies and more.
                                 </p>
-                                <button>Get started</button>
+                                <button className={styles.landing_btn}>Get started</button>
                             </div>
                         </div>
                     </header>
@@ -83,7 +85,7 @@ const LandingPage = () => {
                                 <h1 style={{width:'50%'}}>One membership, many benefits</h1>
                                 <p className={styles.description} style={{width:'43%'}}>
                                     Your Prime membership now also includes ad-free music along with unlimited free, fast delivery on eligible items, exclusive access to deals &amp; more.                                </p>
-                                <button>Get started</button>
+                                <button className={styles.landing_btn}>Get started</button>
                                 <a href="https://amazon.in/prime"> <div>*Go to amazon.in/prime for more information</div> </a>
                             </div>
                             <div style={{flex: '1'}}> {` `} </div>
@@ -107,7 +109,7 @@ const LandingPage = () => {
                                 <h1 style={{width: '78%'}}>Even better with Fire TV Stick</h1>
                                 <p className={styles.description} style={{width: '90%'}} >
                                     The biggest movies and TV shows are always better on a big screen. Simply plug in your Amazon Fire TV Stick and stream on any HDTV. Press the voice button on the remote and say the name of the title you want to watch to find it in seconds.                                </p>
-                                <button>Get started</button>
+                                <button className={styles.landing_btn}>Get started</button>
                             </div>
                         </div>
                     </header>
@@ -154,7 +156,7 @@ const LandingPage = () => {
                                 <p className={styles.description} style={{width:'43%'}}>
                                     With easy to use Parental Controls and a dedicated kids page, enjoy secure, ad-free kids entertainment. Kids can enjoy popular TV shows like Peppa Pig, Powerpuff Girls, and Chhota Bheem.
                                 </p>
-                                <button>Get started</button>
+                                <button className={styles.landing_btn}>Get started</button>
                             </div>
                             <div style={{flex: '1'}}> {` `} </div>
                         </div>

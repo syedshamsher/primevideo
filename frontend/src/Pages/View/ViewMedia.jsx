@@ -57,7 +57,7 @@ const ViewMedia = () => {
                             width:'100%',
                             display: "flex",
                             flexDirection:'column',
-                            justifyContent: 'space-between'
+                            justifyContent: 'space-evenly'
                         }}
                         >
                         <div className={styles.container}>
@@ -93,24 +93,24 @@ const ViewMedia = () => {
                                 </div>
                                 <div className={styles.crew} >
                                     <div className={styles.crew_details} style={{ marginTop:'10px'}}>
-                                        <p style={{ fontSize:'15px',color:"#8197a4"}}>Directors</p>
-                                        <p style={{fontSize:'15px',color:'#79b8f3'}}>XYZ</p>
+                                        <p style={{ lineHeight:'1px',fontSize:'15px',color:"#8197a4"}}>Directors</p>
+                                        <p style={{lineHeight:'1px',fontSize:'15px',color:'#79b8f3'}}>XYZ</p>
                                     </div>
                                     <div className={styles.crew_details}>
-                                        <p style={{ fontSize:'15px',color:"#8197a4"}}>Starring</p>
-                                        <p style={{fontSize:'15px',color:'#79b8f3'}}>XYZ</p>
+                                        <p style={{ lineHeight:'1px',fontSize:'15px',color:"#8197a4"}}>Starring</p>
+                                        <p style={{lineHeight:'1px',fontSize:'15px',color:'#79b8f3'}}>XYZ</p>
                                     </div>
                                     <div className={styles.crew_details}>
-                                        <p style={{ fontSize:'15px',color:"#8197a4"}}>Genres</p>
-                                        <p style={{fontSize:'15px',color:'#79b8f3'}}>XYZ</p>
+                                        <p style={{ lineHeight:'1px',fontSize:'15px',color:"#8197a4"}}>Genres</p>
+                                        <p style={{lineHeight:'1px',fontSize:'15px',color:'#79b8f3'}}>XYZ</p>
                                     </div>
                                     <div className={styles.crew_details}>
-                                        <p style={{ fontSize:'15px',color:"#8197a4"}}>Subtitles</p>
-                                        <p style={{fontSize:'15px',color:'#79b8f3'}}>XYZ</p>
+                                        <p style={{ lineHeight:'1px',fontSize:'15px',color:"#8197a4"}}>Subtitles</p>
+                                        <p style={{lineHeight:'1px',fontSize:'15px',color:'#79b8f3'}}>XYZ</p>
                                     </div>
                                     <div className={styles.crew_details}>
-                                        <p style={{ fontSize:'15px',color:"#8197a4"}}>Audio languages</p>
-                                        <p style={{fontSize:'15px',color:'#79b8f3'}}>XYZ</p>
+                                        <p style={{ lineHeight:'1px',fontSize:'15px',color:"#8197a4"}}>Audio languages</p>
+                                        <p style={{lineHeight:'1px',fontSize:'15px',color:'#79b8f3'}}>XYZ</p>
                                     </div>
                                 </div>
                             </div>
@@ -188,7 +188,7 @@ const ViewMedia = () => {
                             width:'100%',
                             display: "flex",
                             flexDirection:'column',
-                            justifyContent: 'space-between'
+                            justifyContent: 'space-evenly'
                         }}
                         >
                         <div className={styles.container}>
@@ -224,24 +224,24 @@ const ViewMedia = () => {
                                 </div>
                                 <div className={styles.crew} >
                                     <div className={styles.crew_details} style={{ marginTop:'10px'}}>
-                                        <p style={{ fontSize:'15px',color:"#8197a4"}}>Directors</p>
-                                        <p style={{ fontSize:'15px',color:'#79b8f3'}}>XYZ</p>
+                                        <p style={{ lineHeight:'1px',fontSize:'15px',color:"#8197a4"}}>Directors</p>
+                                        <p style={{ lineHeight:'1px',fontSize:'15px',color:'#79b8f3'}}>XYZ</p>
                                     </div>
                                     <div className={styles.crew_details}>
-                                        <p style={{ fontSize:'15px',color:"#8197a4"}}>Starring</p>
-                                        <p style={{ fontSize:'15px',color:'#79b8f3'}}>XYZ</p>
+                                        <p style={{ lineHeight:'1px',fontSize:'15px',color:"#8197a4"}}>Starring</p>
+                                        <p style={{ lineHeight:'1px',fontSize:'15px',color:'#79b8f3'}}>XYZ</p>
                                     </div>
                                     <div className={styles.crew_details}>
-                                        <p style={{ fontSize:'15px',color:"#8197a4"}}>Genres</p>
-                                        <p style={{ fontSize:'15px',color:'#79b8f3'}}>XYZ</p>
+                                        <p style={{ lineHeight:'1px',fontSize:'15px',color:"#8197a4"}}>Genres</p>
+                                        <p style={{ lineHeight:'1px',fontSize:'15px',color:'#79b8f3'}}>XYZ</p>
                                     </div>
                                     <div className={styles.crew_details}>
-                                        <p style={{ fontSize:'15px',color:"#8197a4"}}>Subtitles</p>
-                                        <p style={{ fontSize:'15px',color:'#79b8f3'}}>XYZ</p>
+                                        <p style={{ lineHeight:'1px',fontSize:'15px',color:"#8197a4"}}>Subtitles</p>
+                                        <p style={{ lineHeight:'1px',fontSize:'15px',color:'#79b8f3'}}>XYZ</p>
                                     </div>
                                     <div className={styles.crew_details}>
-                                        <p style={{ fontSize:'15px',color:"#8197a4"}}>Audio languages</p>
-                                        <p style={{ fontSize:'15px',color:'#79b8f3'}}>XYZ</p>
+                                        <p style={{ lineHeight:'1px',fontSize:'15px',color:"#8197a4"}}>Audio languages</p>
+                                        <p style={{ lineHeight:'1px',fontSize:'15px',color:'#79b8f3'}}>XYZ</p>
                                     </div>
                                 </div>
                             </div>
