@@ -9,6 +9,9 @@ const feedbackRoute = require("./routes/feedback");
 const Users = require("./models/users");
 const fs = require("fs");
 const path = require("path");
+const { v4: uuidv4 } = require('uuid')
+const Razorpay = require('razorpay');
+const request = require('request');
 
 dotenv.config();
 const app = express();
@@ -47,6 +50,10 @@ app.get("/video/:name", function (req, res) {
 });
 
 
+const instance = new Razorpay({
+  key_id: process.env.RAZOR_PAY_KEY_ID,
+  key_secret: process.env.RAZOR_PAY_KEY_SECRET
+})
 app.post('/order', (req, res) => {
   let amount = req.body.order.amount
   try {
@@ -68,7 +75,6 @@ app.post('/order', (req, res) => {
       })
   }
 })
-
 app.post("/capture/:paymentId", (req, res) => {
   const user_id = req.body.user_id;
   const newOrder = req.body.order;

@@ -5,7 +5,6 @@ import { Loginreq } from "../../Redux/user/actions";
 import styles from "./Login.module.css";
 import { Redirect, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-
 export const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -13,17 +12,14 @@ export const Login = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   console.log(isAuth, userdata);
-
   useEffect(() => {
     if (isAuth) {
       history.push("/");
     }
   }, [isAuth]);
-
   const handleLogin = () => {
     dispatch(Loginreq(email, password));
   };
-
   return (
    <>
       {

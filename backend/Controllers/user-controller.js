@@ -113,7 +113,7 @@ const updateFavList = async (req, res) => {
   });
 };
 
-module.exports = { getUser, addUser, editUser, userLogin, updateFavList };
+module.exports = { getUser, addUser, userLogin, updateFavList };
 
 // const updateFavList = (req, res) => {
 //   console.log(req.body);

@@ -1,11 +1,11 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
 import { Login } from "../Pages/Login/Login";
-import { Register } from "../Pages/Register/Register";
 import { Feed } from "../Pages/Feed/Feed";
+import { Register } from "../Pages/Register/Register";
 import { Nav } from "../Components/Nav";
 import { SearchResult } from "../Pages/SearchResult/SearchResult";
-import  ViewMedia  from "../Pages/View/ViewMedia";
+import ViewMedia from "../Pages/View/ViewMedia";
 import MediaPlayer from "../Pages/MediaPlayer/MediaPlayer";
 import { LandingPage } from "../Pages/LandingPage/LandingPage";
 import { Payment } from "../Pages/Payment/Payment";

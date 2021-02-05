@@ -7,7 +7,6 @@ import {Redirect, useHistory, useLocation} from 'react-router-dom';
 import Axios from 'axios';
 import { getActiveUser } from '../../Redux/user/actions';
 import { SuccessMessage } from '../SuccessMessage/SuccessMessage';
-
 export const Payment = () => {
   const {userdata, isAuth} = useSelector(state => state.auth)
   const [loading, setLoading] = React.useState(false)
@@ -15,7 +14,6 @@ export const Payment = () => {
   const arr = history.location.search.split("=")
   let price = arr[arr.length - 1]
   const dispatch = useDispatch();
-
     const paymentHandler = async (e) => {
         e.preventDefault();
         var today = new Date();
@@ -28,7 +26,6 @@ export const Payment = () => {
               date: str,
           },
       }
-    
         const API_URL = 'http://localhost:8001/'
         const orderUrl = `${API_URL}order`;
         let config = {
@@ -59,12 +56,13 @@ export const Payment = () => {
               }
               await Axios(config)
                 .then((res) => {
+                  // alert("Your payment was Successfull, Redirecting to Home page...")
                     setLoading(true)
                     dispatch(getActiveUser())
-                    setInterval(() => setLoading(false), 4000)
+                    // setInterval(() => setLoading(false), 5000)
+                    setTimeout(() => setLoading(false), 15000)
                 } )
                 .catch((err) => alert("error"))
-              
             } catch (err) {
                 console.log(err);
               }
@@ -78,18 +76,15 @@ export const Payment = () => {
               email: userdata.email,
           },
           theme: {
-            color: "#c6203d",
+            color: "#082436",
           },
         };
         const rzp1 = new window.Razorpay(options);
         rzp1.open();
       };
-        
-
-
     return (
        <>
-        { isAuth && loading && <SuccessMessage/> }
+        { isAuth && loading && <div style={{display:"flex", alignItems:"center",justifyContent:"center", height:"50vh"}}><SuccessMessage/></div> }
         { isAuth && userdata.subscription ? <Redirect to="/home" /> : ( <div className={styles.wrapper}>
             <header className={styles.header}>
                 <div className={styles.header_content_container}>
