@@ -5,6 +5,7 @@ const cors = require("cors");
 const connectDB = require("./config/db");
 const mediaRoute = require("./routes/media");
 const userRoute = require("./routes/users");
+const feedbackRoute = require("./routes/feedback");
 const fs = require("fs");
 const path = require("path");
 const { v4: uuidv4 } = require('uuid')
@@ -19,6 +20,7 @@ app.use(cors());
 connectDB();
 app.use("/api/medias", mediaRoute);
 app.use("/api", userRoute);
+app.use("/", feedbackRoute);
 
 app.get("/video/:name", function (req, res) {
   const title = req.params.name;
@@ -45,8 +47,6 @@ app.get("/video/:name", function (req, res) {
   const videoStream = fs.createReadStream(videoPath, { start, end });
   videoStream.pipe(res);
 });
-
-
 
 const instance = new Razorpay({
   key_id: process.env.RAZOR_PAY_KEY_ID,
@@ -99,8 +99,6 @@ app.post("/capture/:paymentId", (req, res) => {
       });
   }
 });
-
-
 
 app.listen(8001, () => {
   console.log("The server is running on port 8001");
