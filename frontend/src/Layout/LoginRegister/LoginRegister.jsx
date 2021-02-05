@@ -7,7 +7,7 @@ const LoginRegister = (props) => {
     <Box className={styles.wrapper_container}>
       <Grid container>
         <Grid item xs></Grid>
-        <Grid item xs={10} sm={5} md={3} lg={3}>
+        <Grid item xs={10} sm={5} md={3} lg={2}>
           <Box className={styles.img_container}>
             <img src="./images/logo.png" width="150" height="47" alt="" />
           </Box>

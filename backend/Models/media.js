@@ -61,6 +61,10 @@ const mediaSchema = new Schema({
         type: String,
         required: false
     },
+    type:{
+        type: String,
+        required: false
+    }
 },
     {
         versionKey: false

@@ -1,5 +1,14 @@
-/* .App {
-  text-align: center;
+@import url(//db.onlinewebfonts.com/c/157c6cc36dd65b1b2adc9e7f3329c761?family=Amazon+Ember);
+
+.body{
+  overflow-x: hidden;
+  font-family: "Amazon Ember",Arial,sans-serif;
+}
+
+
+.App {
+ 
+  overflow-x: hidden;
 }
 
 .App-logo {
@@ -35,4 +44,4 @@
   to {
     transform: rotate(360deg);
   }
-} */
+}
