@@ -7,31 +7,30 @@ import { Nav } from "../Components/Nav";
 import { SearchResult } from "../Pages/SearchResult/SearchResult";
 import ViewMedia from "../Pages/View/ViewMedia";
 import MediaPlayer from "../Pages/MediaPlayer/MediaPlayer";
-import { LandingNav } from "../Components/LandingNav/LandingNav";
 import { LandingPage } from "../Pages/LandingPage/LandingPage";
 import { Payment } from "../Pages/Payment/Payment";
+import PrivateRoute from "./PrivateRoute";
 
 export const Routes = () => {
   return (
     <div>
-        <Route path="/payment" exact render={() => <Payment />} />
         <Route path="/" render={() => <Nav />} />
-      <Switch>
-        <Route path="/search" exact render={() => <SearchResult />} />
-        <Route path="/prime" exact render={() => <LandingPage />} />
-        <Route path="/" exact render={() => <Feed />} />
         <Route path="/login" exact render={() => <Login />} />
         <Route path="/register" exact render={() => <Register />} />
-        <Route
+      <Switch>
+        <PrivateRoute path="/payment" exact MyComponent={Payment} />
+        <PrivateRoute path="/search" exact MyComponent={SearchResult} />
+        <Route path="/" exact render={() => <LandingPage />} />
+        <PrivateRoute path="/home" exact MyComponent={Feed} />
+        <PrivateRoute
           path="/media/:id"
           exact
-          render={(props) => <ViewMedia {...props} />}
+          MyComponent={ViewMedia}
         />
-        <Route
+        <PrivateRoute
           path="/player/:title"
           exact
-          render={(props) => <MediaPlayer {...props} />}
-        />
+          MyComponent={MediaPlayer} />
       </Switch>
     </div>
   );

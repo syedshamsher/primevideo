@@ -23,7 +23,7 @@ export const Register = () => {
     setTimeout(() => {
       if (registered) {
         dispatch(setRegister(false));
-        history.push("/");
+        history.push("/login");
       }
     }, 2000);
   }, [registered]);
@@ -112,18 +112,18 @@ export const Register = () => {
           <div className={styles.form_term_policy}>
             By continuing, you agree to Amazon's{` `}
             <span>
-              <a href="/">Conditions of Use</a>
+              <a style={{color: "blue"}} href="/">Conditions of Use</a>
             </span>
             {` `}and{` `}
             <span>
-              <a href="/">Privacy Notice</a>
+              <a style={{color: "blue"}} href="/">Privacy Notice</a>
             </span>
             .
           </div>
           <div className={styles.form_footer}>
             Already have a account?
             <span>
-              <a href="/login">Sign-In </a>
+              <a style={{color: "blue"}} href="/login">Sign-In </a>
             </span>
           </div>
         </Box>

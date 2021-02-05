@@ -45,9 +45,17 @@ const addUser = async (req, res, next) => {
   });
   newUser
     .save()
-    .then(() => res.json({ user: { name: name, email: email, type: type } }))
+    .then((data) => res.json(data))
     .catch((err) => res.status(400).json("Error: " + err));
 };
+
+const getUserById = (req, res) => {
+  const id = req.body.id;
+  Users.find({ _id: id }).then((data) => {
+    res.status(200).send(data);
+  });
+};
+
 
 // const editUser = (req, res) => {
 //   const id = req.params.id;
@@ -124,7 +132,7 @@ const updateFavList = async (req, res) => {
   );
 };
 
-module.exports = { getUser, addUser, userLogin, updateFavList };
+module.exports = { getUser, addUser, userLogin, updateFavList, getUserById };
 
 // const updateFavList = (req, res) => {
 //   console.log(req.body);

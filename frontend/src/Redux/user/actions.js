@@ -86,6 +86,26 @@ export const updateWatchList = (payload) => {
   };
 };
 
+export const getActiveUser = () => (dispatch) => {
+  const accessToken = localStorage.getItem('accesstoken');
+  axios({
+    method: "GET",
+    url: "http://localhost:8001/api/users",
+    headers: {
+      authorization: `Bearer ${accessToken}`,
+    },
+  })
+    .then((res) => {
+      console.log("logged in", res.data[0]);
+      dispatch(loginSuccess(res.data[0]));
+      return true;
+    })
+    .catch((res) => {
+      console.log("error", res.response.data);
+      dispatch(loginFailure(res.response.data));
+    });
+}
+
 export const Loginreq = (email, pass) => (dispatch) => {
   dispatch(loginRequest(email, pass));
   const config = {
@@ -100,6 +120,7 @@ export const Loginreq = (email, pass) => (dispatch) => {
   return axios(config)
     .then((res) => {
       console.log(res.data.accesstoken);
+      localStorage.setItem('accesstoken', res.data.accesstoken)
       return axios({
         method: "GET",
         url: "http://localhost:8001/api/users",
@@ -135,7 +156,8 @@ export const Regreq = (payload) => (dispatch) => {
     .then((res) => {
       console.log(res);
       dispatch(setRegister(true));
-      dispatch(registerSuccess(res.data.user));
+      // dispatch(registerSuccess(res.data));
+      
       return true;
     })
     .catch((res) => {
