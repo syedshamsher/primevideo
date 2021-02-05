@@ -88,6 +88,15 @@ export const fetchMedia = (id) => dispatch => {
         .then((res) => {
             console.log(res.data)
             dispatch(fetchMediaSuccess(res.data))
+             if(res.data.media_type=="tv"){
+                axios({
+                    method: 'get',
+                    url: `https://api.themoviedb.org/3/tv/${res.data.id}/season/1?api_key=f68ad2333b36443da92e29b79b66f4f1&language=en-US`
+                }).then((resp) => {
+                    console.log(resp.data)
+                    dispatch(fetchMediaSuccess3(resp.data))
+                })                
+            }
             axios({
                 method: 'get',
                 url: `https://api.themoviedb.org/3/${res.data.media_type}/${res.data.id}/credits?api_key=3da864401bca9475486c35cc206b3e2a&language=en-US`

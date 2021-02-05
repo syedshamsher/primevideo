@@ -34,16 +34,14 @@ const LandingPage = () => {
                         className={styles.banner}
                         style={{
                             backgroundSize: "cover",
-                            backgroundColor: '#000',
-                            backgroundPosition: "right top",
-                            backgroundImage: `linear-gradient(to right, #000 40%, transparent 58%),url("https://m.media-amazon.com/images/G/31/AmazonVideo/2019/1102620_MLP_1440x675_apv189_V3._SY1200_FMJPG_.jpg")`,
+                            backgroundImage: `linear-gradient(to right, #0f171e 40%, transparent 100%),url("")`,
                             backdropPosition: "center",
                             backgroundRepeat: "no-repeat",
                             height:'88vh'
                         }}
                         >
                         <div className={styles.container}>
-                            <div className={styles.content}>
+                            <div >
                                 <h1>Welcome to Prime Video</h1>
                                 <p className={styles.description} >
                                     Join Prime to watch the latest movies, TV shows and award-winning Amazon Originals
@@ -166,9 +164,11 @@ const LandingPage = () => {
                                 </p>
                                 <button className={styles.landing_btn}>Get started</button>
                             </div>
-                            <div style={{flex: '1'}}> {` `} </div>
+                            <div> {` `} </div>
                         </div>
                     </header>
+                    <div>
+                    </div>
                 </div>
        
     )

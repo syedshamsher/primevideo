@@ -8451,7 +8451,7 @@ const movies=[
     },
     {
         "backdrop_path": "https://image.tmdb.org/t/p/original/4knNJx0Mk5h6SOMFZjlVZTXclEN.jpg",
-        "first_air_date": "2017-08-18",
+        "release_date": "2017-08-18",
         "genre_ids": [
             10767
         ],
@@ -8461,12 +8461,13 @@ const movies=[
             "IN"
         ],
         "original_language": "ml",
-        "original_name": "Lal Salam",
+        "original_title": "Lal Salam",
         "overview": "Lal Salam is an Indian entertainment talk show hosted by actor Mohanlal on Amrita TV. The show is themed around Mohanlal's film career, it also introduces and honours humanitarians and social workers, and has other interactive and performance segments. It is the first television presentation by Mohanlal, hosted alongside Meera Nandan.",
         "popularity": 2.432,
         "poster_path": "/Avifg5SomCsfdT3PQuAWJ1YgFwx.jpg",
         "vote_average": 10,
-        "vote_count": 1
+        "vote_count": 1,
+        "media_type": "tv"
     },
     {
         "adult": false,
@@ -8489,7 +8490,8 @@ const movies=[
         "title": "Trance",
         "video": false,
         "vote_average": 7.1,
-        "vote_count": 27
+        "vote_count": 27,
+        "media_type": "movie"
     },
     {
         "adult": false,
@@ -8508,7 +8510,8 @@ const movies=[
         "title": "പ്രേമം",
         "video": false,
         "vote_average": 7.2,
-        "vote_count": 57
+        "vote_count": 57,
+        "media_type": "movie"
     },
     {
         "adult": false,
@@ -8528,7 +8531,8 @@ const movies=[
         "title": "ഇയോബിന്‍റെ പുസ്തകം",
         "video": false,
         "vote_average": 7.9,
-        "vote_count": 25
+        "vote_count": 25,
+        "media_type": "movie"
     },
     {
         "adult": false,
@@ -8547,7 +8551,8 @@ const movies=[
         "title": "മഹേഷിന്‍റെ പ്രതികാരം",
         "video": false,
         "vote_average": 7.6,
-        "vote_count": 43
+        "vote_count": 43,
+        "media_type": "movie"
     },
     {
         "adult": false,
@@ -8566,7 +8571,8 @@ const movies=[
         "title": "സെക്കന്‍റ് ഷോ",
         "video": false,
         "vote_average": 6.9,
-        "vote_count": 19
+        "vote_count": 19,
+        "media_type": "movie"
     },
     {
         "adult": false,
@@ -8584,7 +8590,8 @@ const movies=[
         "title": "Chak De! India",
         "video": false,
         "vote_average": 7.4,
-        "vote_count": 196
+        "vote_count": 196,
+        "media_type": "movie"
     },    
     {
         "adult": false,
@@ -8605,7 +8612,8 @@ const movies=[
         "title": "Haider",
         "video": false,
         "vote_average": 7.1,
-        "vote_count": 155
+        "vote_count": 155,
+        "media_type": "movie"
     },
     {
         "adult": false,
@@ -8624,7 +8632,8 @@ const movies=[
         "title": "Dangal",
         "video": false,
         "vote_average": 8,
-        "vote_count": 556
+        "vote_count": 556,
+        "media_type": "movie"
     },
     {
         "adult": false,
@@ -8643,7 +8652,8 @@ const movies=[
         "title": "3 Idiots",
         "video": false,
         "vote_average": 7.9,
-        "vote_count": 1526
+        "vote_count": 1526,
+        "media_type": "movie"
     },
     {
         "adult": false,
@@ -8663,7 +8673,8 @@ const movies=[
         "title": "Bhaag Milkha Bhaag",
         "video": false,
         "vote_average": 7.6,
-        "vote_count": 161
+        "vote_count": 161,
+        "media_type": "movie"
     },
     {
         "adult": false,
@@ -8682,7 +8693,8 @@ const movies=[
         "title": "My Name Is Khan",
         "video": false,
         "vote_average": 8.1,
-        "vote_count": 803
+        "vote_count": 803,
+        "media_type": "movie"
     },
     {
         "adult": false,
@@ -8701,11 +8713,12 @@ const movies=[
         "title": "The Guru",
         "video": false,
         "vote_average": 5.1,
-        "vote_count": 154
+        "vote_count": 154,
+        "media_type": "movie"
     },
     {
         "backdrop_path": "https://m.media-amazon.com/images/S/sonata-images-prod/PV_IN_TheGreatEscapistsS1v2/e034ee83-ae32-4644-a99d-0f204ed959f2._UR3000,600_SX1500_FMjpg_.jpg",
-        "first_air_date": "2021-01-28",
+        "release_date": "2021-01-28",
         "genre_ids": [
             99
         ],
@@ -8713,13 +8726,14 @@ const movies=[
         "name": "The Great Escapists",
         "origin_country": [],
         "original_language": "en",
-        "original_name": "The Great Escapists",
+        "original_title": "The Great Escapists",
         "overview": "",
         "popularity": 18.25,
         "poster_path": "/4U6BG3efNUsScbcaxIgb1Rpuxob.jpg",
         "vote_average": 7.5,
         "type":"main",
-        "vote_count": 2
+        "vote_count": 2,
+        "media_type": "tv"
     },
     {
         "adult": false,
@@ -8738,11 +8752,12 @@ const movies=[
         "video": false,
         "vote_average": 7.4,
         "type":"main",
-        "vote_count": 145
+        "vote_count": 145,
+        "media_type": "movie"
     },
     {
         "backdrop_path": "https://m.media-amazon.com/images/S/sonata-images-prod/PV_IN_YoungSheldonNewSeason4WatchNow/203ed7b6-6f53-4b1c-99ba-2f7e80f7199d._UR3000,600_SX1500_FMjpg_.jpg",
-        "first_air_date": "2017-09-25",
+        "release_date": "2017-09-25",
         "genre_ids": [
             35
         ],
@@ -8752,13 +8767,14 @@ const movies=[
             "US"
         ],
         "original_language": "en",
-        "original_name": "Young Sheldon",
+        "original_title": "Young Sheldon",
         "overview": "",
         "popularity": 136.229,
         "poster_path": "/1vcEZVuv3ZwHUb6bm6fSWB9HTJc.jpg",
         "vote_average": 8,
         "type":"main",
-        "vote_count": 1066
+        "vote_count": 1066,
+        "media_type": "tv"
     },
     {
         "adult": false,
@@ -8778,7 +8794,8 @@ const movies=[
         "video": false,
         "vote_average": 7.6,
         "type":"main",
-        "vote_count": 95
+        "vote_count": 95,
+        "media_type": "movie"
     },
     {
         "adult": false,
@@ -8799,11 +8816,12 @@ const movies=[
         "video": false,
         "vote_average": 6.9,
         "type":"main",
-        "vote_count": 176
+        "vote_count": 176,
+        "media_type": "movie"
     },
     {
         "backdrop_path": "https://m.media-amazon.com/images/G/01/digital/video/sonata/PV_IN_Fleabag2GoldenGlobe/ff240645-476a-43ee-af67-1e1fe1751a7d._UR3000,600_SX1500_FMjpg_.jpg",
-        "first_air_date": "2016-07-21",
+        "release_date": "2016-07-21",
         "genre_ids": [
             35,
             18
@@ -8814,17 +8832,18 @@ const movies=[
             "GB"
         ],
         "original_language": "en",
-        "original_name": "Fleabag",
+        "original_title": "Fleabag",
         "overview": "",
         "popularity": 18.739,
         "poster_path": "/27vEYsRKa3eAniwmoccOoluEXQ1.jpg",
         "vote_average": 8.2,
         "type":"main",
-        "vote_count": 390
+        "vote_count": 390,
+        "media_type": "tv"
     },
     {
         "backdrop_path": "https://m.media-amazon.com/images/G/01/digital/video/sonata/PV_IN_HannaS2Launch/e8172414-add0-4541-bd09-d8a77d319d85._UR3000,600_SX1500_FMjpg_.jpg",
-        "first_air_date": "2019-03-28",
+        "release_date": "2019-03-28",
         "genre_ids": [
             10759,
             18
@@ -8835,17 +8854,18 @@ const movies=[
             "US"
         ],
         "original_language": "en",
-        "original_name": "Hanna",
+        "original_title": "Hanna",
         "overview": "",
         "popularity": 31.284,
         "poster_path": "/5nSSkcM3TgpllZ7yTyBOQEgAX36.jpg",
         "vote_average": 7.4,
         "type":"main",
-        "vote_count": 425
+        "vote_count": 425,
+        "media_type": "tv"
     },
     {
         "backdrop_path": "https://m.media-amazon.com/images/S/sonata-images-prod/PV_IN_MomS8NewEpEveryFriday/c87ab5b1-86a1-4bb2-a52b-fcca8e591130._UR3000,600_SX1500_FMjpg_.jpg",
-        "first_air_date": "2013-09-23",
+        "release_date": "2013-09-23",
         "genre_ids": [
             35,
             18
@@ -8856,13 +8876,14 @@ const movies=[
             "US"
         ],
         "original_language": "en",
-        "original_name": "Mom",
+        "original_title": "Mom",
         "overview": "",
         "popularity": 40.434,
         "poster_path": "/8jR5i2z51ymZMrehUgVHFlXUVcB.jpg",
         "vote_average": 7.1,
         "type":"main",
-        "vote_count": 310
+        "vote_count": 310,
+        "media_type": "tv"
     },
     {
         "adult": false,
@@ -8882,11 +8903,12 @@ const movies=[
         "video": false,
         "vote_average": 7.3,
         "type":"main",
-        "vote_count": 10
+        "vote_count": 10,
+        "media_type": "movie"
     },
     {
         "backdrop_path": "https://m.media-amazon.com/images/S/sonata-images-prod/PV_IN_MirzapurDubsAvailalable/1f7722ba-8a39-497d-9619-729b9017dd54._UR3000,600_SX1500_FMjpg_.jpg",
-        "first_air_date": "2018-11-15",
+        "release_date": "2018-11-15",
         "genre_ids": [
             80,
             10759
@@ -8897,17 +8919,18 @@ const movies=[
             "IN"
         ],
         "original_language": "hi",
-        "original_name": "Mirzapur",
+        "original_title": "Mirzapur",
         "overview": "",
         "popularity": 8.471,
         "poster_path": "/yuwE4sI4HxzAI4Sq2i1ja36kwCT.jpg",
         "vote_average": 8.4,
         "type":"main",
-        "vote_count": 44
+        "vote_count": 44,
+        "media_type": "tv"
     },
     {
         "backdrop_path": "https://m.media-amazon.com/images/S/sonata-images-prod/PV_IN_TheGoodDoctorS3/8e35e161-29aa-4026-a720-186cecc58d07._UR3000,600_SX1500_FMjpg_.jpg",
-        "first_air_date": "2017-09-25",
+        "release_date": "2017-09-25",
         "genre_ids": [
             18
         ],
@@ -8917,17 +8940,18 @@ const movies=[
             "US"
         ],
         "original_language": "en",
-        "original_name": "The Good Doctor",
+        "original_title": "The Good Doctor",
         "overview": "",
         "popularity": 938.708,
         "poster_path": "/z1K4mJwISETia59rrnMdXxzoSrZ.jpg",
         "vote_average": 8.6,
         "type":"main",
-        "vote_count": 6633
+        "vote_count": 6633,
+        "media_type": "tv"
     },
     {
         "backdrop_path": "https://m.media-amazon.com/images/S/sonata-images-prod/PV_IN_StarTrekLowerDecksRevised/34a381c1-ac69-4c50-acf3-2a77d7a9bb67._UR3000,600_SX1500_FMjpg_.jpg",
-        "first_air_date": "2020-08-06",
+        "release_date": "2020-08-06",
         "genre_ids": [
             10765,
             16,
@@ -8940,17 +8964,18 @@ const movies=[
             "US"
         ],
         "original_language": "en",
-        "original_name": "Star Trek: Lower Decks",
+        "original_title": "Star Trek: Lower Decks",
         "overview": "",
         "popularity": 15.921,
         "poster_path": "/i7Em3r7KCyNfkOwMkyqN8UMvK8S.jpg",
         "vote_average": 6.7,
         "type":"main",
-        "vote_count": 40
+        "vote_count": 40,
+        "media_type": "tv"
     },
     {
         "backdrop_path": "https://m.media-amazon.com/images/G/01/digital/video/sonata/PV_IN_WorldstoughestRace/a98ab7b1-5c02-4d60-ae25-89969aea08aa._UR3000,600_SX1500_FMjpg_.jpg",
-        "first_air_date": "2020-08-14",
+        "release_date": "2020-08-14",
         "genre_ids": [
             10764
         ],
@@ -8960,17 +8985,18 @@ const movies=[
             "US"
         ],
         "original_language": "en",
-        "original_name": "World’s Toughest Race: Eco-Challenge Fiji",
+        "original_title": "World’s Toughest Race: Eco-Challenge Fiji",
         "overview": "",
         "popularity": 0.604,
         "poster_path": "/7nPLEwsmo4WKiqIoRhjqAePvhx6.jpg",
         "vote_average": 9,
         "type":"main",
-        "vote_count": 2
+        "vote_count": 2,
+        "media_type": "tv"
     },
     {
         "backdrop_path": "https://m.media-amazon.com/images/G/01/digital/video/sonata/PV_IN_MarvelousMrsMaiselS3/01c0356b-cc74-4aa4-a268-abeaa9d81ea5._UR3000,600_SX1500_FMwebp_.jpg",
-        "first_air_date": "2017-03-16",
+        "release_date": "2017-03-16",
         "genre_ids": [
             35,
             18
@@ -8981,13 +9007,14 @@ const movies=[
             "US"
         ],
         "original_language": "en",
-        "original_name": "The Marvelous Mrs. Maisel",
+        "original_title": "The Marvelous Mrs. Maisel",
         "overview": "",
         "popularity": 33.447,
         "poster_path": "/7qxLUcNim8C8x3Bbe10oo12Qywi.jpg",
         "vote_average": 8.2,
         "type":"main",
-        "vote_count": 238
+        "vote_count": 238,
+        "media_type": "tv"
     },
     {
         "adult": false,
@@ -9008,7 +9035,8 @@ const movies=[
         "video": false,
         "vote_average": 5.8,
         "type":"main",
-        "vote_count": 19
+        "vote_count": 19,
+        "media_type": "movie"
     },
 
 

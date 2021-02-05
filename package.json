@@ -22,12 +22,10 @@
     "joi": "^17.3.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.11.14",
-    "nodemailer": "^6.4.17",
     "razorpay": "^2.0.6",
     "redis": "^3.0.2",
     "request": "^2.88.2",
     "response-time": "^2.3.2",
-    "screenfull-react": "0.0.4",
-    "uuid": "^8.3.2"
+    "screenfull-react": "0.0.4"
   }
 }
