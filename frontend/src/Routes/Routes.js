@@ -10,6 +10,7 @@ import MediaPlayer from "../Pages/MediaPlayer/MediaPlayer";
 import { LandingPage } from "../Pages/LandingPage/LandingPage";
 import { Payment } from "../Pages/Payment/Payment";
 import PrivateRoute from "./PrivateRoute";
+import { Watchlist } from "../Pages/WatchList/Watchlist";
 
 export const Routes = () => {
   return (

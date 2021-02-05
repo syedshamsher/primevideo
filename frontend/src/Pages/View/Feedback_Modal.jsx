@@ -53,7 +53,9 @@ export const Feedback_Modal = ({ open, handleClose }) => {
               Please note that we aren't replying to feedback/suggestions. If
               you need to contact us, please go to the{" "}
               <span>
-                <a href="">Help & Customer Service</a>
+                <a className={styles.link_color} href="">
+                  Help & Customer Service
+                </a>
               </span>
               {""} page.
             </h4>
@@ -72,6 +74,11 @@ export const Feedback_Modal = ({ open, handleClose }) => {
                 className={styles.feedback_btn}
                 onClick={() => handleSubmit()}>
                 Submit
+              </button>
+              <button
+                className={styles.feedback_btn}
+                onClick={() => handleClose()}>
+                cancel
               </button>
             </div>
           </div>

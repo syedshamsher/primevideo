@@ -1,0 +1,39 @@
+.watchlist_container{
+    padding: 0px 70px;
+}
+.watchlist_link_container{
+    margin-top: 24px;
+}
+
+.watchlist_link{
+    color:white;
+    text-decoration: underline;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.img_container{
+    margin-top: 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.img_container img{
+    margin-bottom: 24px;
+    max-width: 217px;
+
+}
+.container_subheading{
+    color:white;
+    font-weight: bold;
+}
+
+.container_footer{
+    color:#8197a4;
+}
+.container_footer a{
+    margin-right: none  !important;
+}
+
