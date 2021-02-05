@@ -7,6 +7,9 @@ import { NavLink } from "react-router-dom";
 import styles from "./styles.module.css";
 import { Search } from "../Search/Search";
 import { useHistory } from "react-router-dom";
+import { useSelector, useDispatch} from "react-redux";
+import { LandingNav } from "../LandingNav/LandingNav";
+import { logout } from "../../Redux/user/actions";
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -43,7 +46,9 @@ export function Nav() {
   const [query, setQuery] = React.useState("");
   const [open, setOpen] = React.useState(false);
   const [openNavLink, setOpenNavLink] = React.useState(false);
+  const {userdata, isAuth} = useSelector(state => state.auth)
   const history = useHistory();
+  const dispatch = useDispatch();
 
   const handleClick = () => {
     setOpen((prev) => !prev);
@@ -68,158 +73,158 @@ export function Nav() {
   };
 
   return (
-    <div className={classes.root}>
-      <AppBar position="fixed" className={classes.appBar}>
-        <Toolbar className={classes.toolbar}>
-          <div className={styles.navlink_wrapper_left}>
-            <NavLink to="/">
-              <img
-                className={styles.logo}
-                src="https://amazonuk.gcs-web.com/system/files-encrypted/nasdaq_kms/inline-images/Prime_Video_Logo.png"
-                alt="prime_logo"
+    <>
+      { isAuth && userdata.subscription ? 
+      (<div className={classes.root}>
+        <AppBar id="appbar1" className={classes.appBar}>
+          <Toolbar className={classes.toolbar}>
+            <div className={styles.navlink_wrapper_left}>
+              <NavLink to="/">
+                <img
+                  className={styles.logo}
+                  src="https://amazonuk.gcs-web.com/system/files-encrypted/nasdaq_kms/inline-images/Prime_Video_Logo.png"
+                  alt="prime_logo"
+                />
+              </NavLink>
+              <NavLink
+                className={styles.home_nav}
+                to="/"
+                exact
+                style={{ borderBottom: "0px" }}
+                activeStyle={{ borderBottom: "1px solid white" }}>
+                Home
+              </NavLink>
+              <ClickAwayListener onClickAway={handleClickAwayNavLink}>
+                <div className={styles.drop}>
+                  <div
+                    className={styles.dropdown_wrapper}
+                    onClick={handleClickNavLink}>
+                    <div>Browse..</div>
+                    {openNavLink ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />}
+                  </div>
+                  {openNavLink ? (
+                    <div className={styles.dropdown_navlink_container}>
+                      <div className={styles.dropdown_navlink_wrapper}>
+                        <NavLink className={styles.dropdown_navlink} to="/" exact>
+                          Home
+                        </NavLink>
+                        <hr />
+                        <NavLink
+                          className={styles.dropdown_navlink}
+                          to="/tv-shows">
+                          TV Shows
+                        </NavLink>
+                        <hr />
+                        <NavLink className={styles.dropdown_navlink} to="/movies">
+                          Movies
+                        </NavLink>
+                        <hr />
+                        <NavLink className={styles.dropdown_navlink} to="/kids">
+                          Kids
+                        </NavLink>
+                      </div>
+                    </div>
+                  ) : null}
+                </div>
+              </ClickAwayListener>
+              <NavLink
+                className={styles.nav}
+                to="/tv-shows"
+                activeStyle={{ borderBottom: "1px solid white" }}>
+                TV Shows
+              </NavLink>
+              <NavLink
+                className={styles.nav}
+                to="/movies"
+                activeStyle={{ borderBottom: "1px solid white" }}>
+                Movies
+              </NavLink>
+              <NavLink
+                className={styles.nav}
+                to="/kids"
+                activeStyle={{ borderBottom: "1px solid white" }}>
+                Kids
+              </NavLink>
+            </div>
+            <div className={styles.navlink_wrapper_right}>
+              <Search
+                setQuery={setQuery}
+                query={query}
+                queryHandler={queryHandler}
               />
-            </NavLink>
-            <NavLink
-              className={styles.home_nav}
-              to="/"
-              exact
-              style={{ borderBottom: "0px" }}
-              activeStyle={{ borderBottom: "1px solid white" }}>
-              Home
-            </NavLink>
-            <ClickAwayListener onClickAway={handleClickAwayNavLink}>
-              <div className={styles.drop}>
-                <div
-                  className={styles.dropdown_wrapper}
-                  onClick={handleClickNavLink}>
-                  <div>Browse..</div>
-                  {openNavLink ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />}
-                </div>
-                {openNavLink ? (
-                  <div className={styles.dropdown_navlink_container}>
-                    <div className={styles.dropdown_navlink_wrapper}>
-                      <NavLink className={styles.dropdown_navlink} to="/" exact>
-                        Home
-                      </NavLink>
-                      <hr />
-                      <NavLink
-                        className={styles.dropdown_navlink}
-                        to="/tv-shows">
-                        TV Shows
-                      </NavLink>
-                      <hr />
-                      <NavLink className={styles.dropdown_navlink} to="/movies">
-                        Movies
-                      </NavLink>
-                      <hr />
-                      <NavLink className={styles.dropdown_navlink} to="/kids">
-                        Kids
-                      </NavLink>
-                    </div>
+              <Avatar className={classes.avatar} />
+              <ClickAwayListener onClickAway={handleClickAway}>
+                <div className={classes.root}>
+                  <div className={styles.dropdown_wrapper} onClick={handleClick}>
+                    <div>{userdata.name}</div>
+                    {open ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />}
                   </div>
-                ) : null}
-              </div>
-            </ClickAwayListener>
-            <NavLink
-              className={styles.nav}
-              to="/tv-shows"
-              activeStyle={{ borderBottom: "1px solid white" }}>
-              TV Shows
-            </NavLink>
-            <NavLink
-              className={styles.nav}
-              to="/movies"
-              activeStyle={{ borderBottom: "1px solid white" }}>
-              Movies
-            </NavLink>
-            <NavLink
-              className={styles.nav}
-              to="/kids"
-              activeStyle={{ borderBottom: "1px solid white" }}>
-              Kids
-            </NavLink>
-          </div>
-          <div className={styles.navlink_wrapper_right}>
-            <Search
-              setQuery={setQuery}
-              query={query}
-              queryHandler={queryHandler}
-            />
-            <Avatar className={classes.avatar} />
-            <ClickAwayListener onClickAway={handleClickAway}>
-              <div className={classes.root}>
-                <div className={styles.dropdown_wrapper} onClick={handleClick}>
-                  <div>Shams...</div>
-                  {open ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />}
+                  {open ? (
+                    <div className={styles.dropdown}>
+                      <div className={styles.subnav_left_wrapper}>
+                        <NavLink
+                          className={classes.subnav_links}
+                          to="/your-watchlist"
+                          exact>
+                          Your Watchlist
+                        </NavLink>
+                        <NavLink
+                          className={classes.subnav_links}
+                          to="/account-settings"
+                          exact>
+                          Account &amp; Settings
+                        </NavLink>
+                        <NavLink
+                          className={classes.subnav_links}
+                          to="/watch-anywhere"
+                          exact>
+                          Watch Anywhere
+                        </NavLink>
+                        <NavLink
+                          className={classes.subnav_links}
+                          to="/help"
+                          exact>
+                          Help
+                        </NavLink>
+                        <div onClick={() => dispatch(logout())}>
+                          Not {userdata.name}? Sign Out
+                        </div>
+                      </div>
+                      <div className={styles.subnav_right_wrapper}>
+                        <div className={styles.sub_nav_avatar_wrapper}>
+                          <Avatar />
+                          <div style={{ marginLeft: "5px" }}>User1</div>
+                        </div>
+                        <div className={styles.sub_nav_avatar_wrapper}>
+                          <Avatar />
+                          <div style={{ marginLeft: "5px" }}>Kids</div>
+                        </div>
+                        <div className={styles.sub_nav_avatar_wrapper}>
+                          <Avatar>+</Avatar>
+                          <div style={{ marginLeft: "5px" }}>Add new</div>
+                        </div>
+                        <NavLink
+                          className={classes.subnav_links}
+                          to="/manage-profiles"
+                          exact>
+                          Manage profile
+                        </NavLink>
+                        <NavLink
+                          className={classes.subnav_links}
+                          to="/learn-more"
+                          exact>
+                          Learn more
+                        </NavLink>
+                      </div>
+                    </div>
+                  ) : null}
                 </div>
-                {open ? (
-                  <div className={styles.dropdown}>
-                    <div className={styles.subnav_left_wrapper}>
-                      <NavLink
-                        className={classes.subnav_links}
-                        to="/your-watchlist"
-                        exact>
-                        Your Watchlist
-                      </NavLink>
-                      <NavLink
-                        className={classes.subnav_links}
-                        to="/account-settings"
-                        exact>
-                        Account &amp; Settings
-                      </NavLink>
-                      <NavLink
-                        className={classes.subnav_links}
-                        to="/watch-anywhere"
-                        exact>
-                        Watch Anywhere
-                      </NavLink>
-                      <NavLink
-                        className={classes.subnav_links}
-                        to="/help"
-                        exact>
-                        Help
-                      </NavLink>
-                      <NavLink
-                        className={classes.subnav_links}
-                        to="/signout"
-                        exact>
-                        Not Syed? Sign Out
-                      </NavLink>
-                    </div>
-                    <div className={styles.subnav_right_wrapper}>
-                      <div className={styles.sub_nav_avatar_wrapper}>
-                        <Avatar />
-                        <div style={{ marginLeft: "5px" }}>User1</div>
-                      </div>
-                      <div className={styles.sub_nav_avatar_wrapper}>
-                        <Avatar />
-                        <div style={{ marginLeft: "5px" }}>Kids</div>
-                      </div>
-                      <div className={styles.sub_nav_avatar_wrapper}>
-                        <Avatar>+</Avatar>
-                        <div style={{ marginLeft: "5px" }}>Add new</div>
-                      </div>
-                      <NavLink
-                        className={classes.subnav_links}
-                        to="/manage-profiles"
-                        exact>
-                        Manage profile
-                      </NavLink>
-                      <NavLink
-                        className={classes.subnav_links}
-                        to="/learn-more"
-                        exact>
-                        Learn more
-                      </NavLink>
-                    </div>
-                  </div>
-                ) : null}
-              </div>
-            </ClickAwayListener>
-          </div>
-        </Toolbar>
-      </AppBar>
-      <Toolbar></Toolbar>
-    </div>
+              </ClickAwayListener>
+            </div>
+          </Toolbar>
+        </AppBar>
+        <Toolbar></Toolbar>
+      </div>) : <LandingNav/> }
+    </>
   );
 }
