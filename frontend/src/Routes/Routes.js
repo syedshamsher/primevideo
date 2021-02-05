@@ -9,12 +9,14 @@ import  ViewMedia  from "../Pages/View/ViewMedia";
 import MediaPlayer from "../Pages/MediaPlayer/MediaPlayer";
 import { LandingNav } from "../Components/LandingNav/LandingNav";
 import { LandingPage } from "../Pages/LandingPage/LandingPage";
+import { Payment } from "../Pages/Payment/Payment";
 
 
 export const Routes = () => {
   return (
     <div>
-      <Route path="/" render={() => <Nav />} />
+        <Route path="/payment" exact render={() => <Payment />} />
+        <Route path="/" render={() => <Nav />} />
       <Switch>
         <Route path="/search" exact render={() => <SearchResult />} />
         <Route path="/prime" exact render={() => <LandingPage />} />

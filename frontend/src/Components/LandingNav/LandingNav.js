@@ -112,7 +112,7 @@ export function LandingNav() {
             </ClickAwayListener>
             <NavLink
                 className={classes.subnav_links}
-                to="/signin"
+                to="/login"
                 exact>
                 Sign In
             </NavLink>
