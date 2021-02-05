@@ -148,6 +148,10 @@ body {
     border-color: #a88734 #9c7e31 #846a29;
     background-color:#f0c14b ;
     color: black;
-    cursor: pointer;
+    cursor: pointer;margin-right: 10px;
       font-size: 12px;
+  }
+
+  .link_color{
+    color:blue
   }
