@@ -45,27 +45,17 @@ const addUser = async (req, res, next) => {
   });
   newUser
     .save()
-    .then(() => res.json({ user: { name: name, email: email, type: type } }))
+    .then((data) => res.json(data))
     .catch((err) => res.status(400).json("Error: " + err));
 };
 
-const editUser = (req, res) => {
-  const id = req.params.id;
-  Students.findById(id)
-    .then((student) => {
-      student.name = req.body.name;
-      student.age = req.body.age;
-      student.city = req.body.city;
-      student.gender = req.body.gender;
-      student.blood_group = req.body.blood_group;
-
-      student
-        .save()
-        .then(() => res.json("Student Updated Successfully"))
-        .catch((err) => res.status(400).json("Error: " + err));
-    })
-    .catch((err) => res.status(404).json("Student not Found"));
+const getUserById = (req, res) => {
+  const id = req.body.id;
+  Users.find({ _id: id }).then((data) => {
+    res.status(200).send(data);
+  });
 };
+
 
 const userLogin = async (req, res, next) => {
   console.log("asdas", req.body);

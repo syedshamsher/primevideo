@@ -24,13 +24,13 @@ const LoginRegister = (props) => {
           <div className={styles.footer}>
             <ul>
               <li>
-                <a href="/login">Conditins of use</a>
+                <a style={{color: "blue"}} href="/login">Conditins of use</a>
               </li>
               <li>
-                <a href="/login">Privacy Notice</a>
+                <a style={{color: "blue"}} href="/login">Privacy Notice</a>
               </li>
               <li>
-                <a href="/login">Help</a>
+                <a style={{color: "blue"}} href="/login">Help</a>
               </li>
             </ul>
           </div>

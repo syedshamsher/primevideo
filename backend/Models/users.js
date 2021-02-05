@@ -16,7 +16,10 @@ const userSchema = new Schema({
     fav:  {
         type: Array,
     },
-
+    subscription: {
+        type: Boolean,
+        default: false,
+    }
 },
     {
         versionKey: false
