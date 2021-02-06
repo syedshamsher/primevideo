@@ -10,6 +10,8 @@ import {
   LOCATION_FAILURE,
   SET_REGISTER,
   ADD_WATCHLIST,
+  TEMP_UPDATE,
+  GET_ACTIVE_USER
 } from "./actionTypes";
 import axios from "axios";
 const loginRequest = (uname, pass) => {
@@ -86,6 +88,28 @@ export const updateWatchList = (payload) => {
   };
 };
 
+
+
+export const getActiveUser = () => (dispatch) => {
+  const accessToken = localStorage.getItem('accesstoken');
+  axios({
+    method: "GET",
+    url: "http://localhost:8001/api/users",
+    headers: {
+      authorization: `Bearer ${accessToken}`,
+    },
+  })
+    .then((res) => {
+      console.log("logged in", res.data[0]);
+      dispatch(loginSuccess(res.data[0]));
+      return true;
+    })
+    .catch((res) => {
+      console.log("error", res.response.data);
+      dispatch(loginFailure(res.response.data));
+    });
+}
+
 export const Loginreq = (email, pass) => (dispatch) => {
   dispatch(loginRequest(email, pass));
   const config = {
@@ -100,6 +124,7 @@ export const Loginreq = (email, pass) => (dispatch) => {
   return axios(config)
     .then((res) => {
       console.log(res.data.accesstoken);
+      localStorage.setItem('accesstoken', res.data.accesstoken)
       return axios({
         method: "GET",
         url: "http://localhost:8001/api/users",
@@ -135,7 +160,8 @@ export const Regreq = (payload) => (dispatch) => {
     .then((res) => {
       console.log(res);
       dispatch(setRegister(true));
-      dispatch(registerSuccess(res.data.user));
+      // dispatch(registerSuccess(res.data));
+      
       return true;
     })
     .catch((res) => {
@@ -180,6 +206,7 @@ export const addOrder = (id, payload) => (dispatch) => {
 };
 
 export const newWatchList = (payload) => (dispatch) => {
+  // dispatch(tempupdate(payload))
   var config = {
     method: "put",
     url: "http://localhost:8001/api/add_watchlist",
@@ -192,6 +219,7 @@ export const newWatchList = (payload) => (dispatch) => {
   axios(config)
     .then(function (response) {
       dispatch(updateWatchList(response.data));
+      dispatch(getActiveUser())
     })
     .catch(function (error) {
       console.log(error);

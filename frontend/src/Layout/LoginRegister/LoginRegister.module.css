@@ -1,6 +1,4 @@
 @import url(//db.onlinewebfonts.com/c/157c6cc36dd65b1b2adc9e7f3329c761?family=Amazon+Ember);
-
-
 .wrapper_container{
     padding-top: 1.25rem;
     background-color: white;
@@ -31,12 +29,10 @@
     display: flex;
     /* justify-content: center; */
     align-items:left;
-    
     flex-direction: column;
     border-radius: .25rem;
     padding:.9rem 1.12rem;
 }
-
   .footer{
       display: flex;
       justify-content: center;
@@ -44,9 +40,7 @@
   .footer ul {
        display: flex;
        /* justify-content: center; */
-       
   }
-
   .footer li{
       margin-right: 15px;
       font-size: 12px;

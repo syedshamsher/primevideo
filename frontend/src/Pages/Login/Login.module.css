@@ -1,12 +1,10 @@
 @import url(//db.onlinewebfonts.com/c/157c6cc36dd65b1b2adc9e7f3329c761?family=Amazon+Ember);
-
 .form_wrapper{
     display: flex;
     flex-direction: column;
     /* align-items: unset; */
 }
 .form_wrapper a{text-decoration: none;
-
 }
 .form_heading{
     font-weight: 200;
@@ -27,7 +25,6 @@
     border-radius: 4px;
     border:1px solid black;
     margin-bottom: 20px;
-    
 }
 .input:active{
     box-shadow: tomato;
@@ -36,7 +33,6 @@
         display: flex;
         justify-content: space-between;
 }
-
 .pass_label a{
     font-size: 12px;
     text-decoration: none;
@@ -53,20 +49,15 @@
     cursor: pointer;
     font-weight: 300;
 }
-
 .form_term_policy{
     font-size: 11px;
     margin-bottom:20px;
 }
-
-
-
 .footer_heading{
     text-align: center;
     font-size: 12px;
     margin-bottom: 11px;
 }
-
 .btn_secondary{
     border: 1px solid;
     outline: none;
@@ -77,7 +68,6 @@
     cursor: pointer;
     font-weight: 300;
 }
-
 .footer_heading{
     width: 100%;
     display: flex; 

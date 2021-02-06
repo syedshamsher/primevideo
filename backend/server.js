@@ -6,6 +6,7 @@ const connectDB = require("./config/db");
 const mediaRoute = require("./routes/media");
 const userRoute = require("./routes/users");
 const feedbackRoute = require("./routes/feedback");
+const Users = require("./models/users");
 const fs = require("fs");
 const path = require("path");
 const { v4: uuidv4 } = require('uuid')
@@ -20,12 +21,12 @@ app.use(cors());
 connectDB();
 app.use("/api/medias", mediaRoute);
 app.use("/api", userRoute);
-app.use("/", feedbackRoute);
 
 app.get("/video/:name", function (req, res) {
-  const title = req.params.name;
-  console.log("video");
+  console.log("video",req.headers)
+  const title = req.params.name;  
   const range = req.headers.range;
+  console.log(title,range)
   if (!range) {
     res.status(400).send("Range Headers missing");
   }
@@ -48,15 +49,16 @@ app.get("/video/:name", function (req, res) {
   videoStream.pipe(res);
 });
 
+
 const instance = new Razorpay({
   key_id: process.env.RAZOR_PAY_KEY_ID,
   key_secret: process.env.RAZOR_PAY_KEY_SECRET
 })
-
-app.get('/order', (req, res) => {
+app.post('/order', (req, res) => {
+  let amount = req.body.order.amount
   try {
       const options = {
-          amount: 10 * 100,
+          amount: amount * 100,
           currency: 'INR',
           receipt: uuidv4(),
           payment_capture: 0
@@ -73,8 +75,9 @@ app.get('/order', (req, res) => {
       })
   }
 })
-
 app.post("/capture/:paymentId", (req, res) => {
+  const user_id = req.body.user_id;
+  const newOrder = req.body.order;
   try {
       return request(
           {
@@ -91,7 +94,24 @@ app.post("/capture/:paymentId", (req, res) => {
                       message: "Something Went Wrong",
                   });
               }
-              return res.status(200).json(body);
+              Users.findOne({ _id: user_id }, { subscription: 1, _id: 0 })
+                .then((data) => {
+                    console.log( data )
+                    if(data) {
+                        Users.findOneAndUpdate({ _id : user_id} , {subscription: true})
+                        .then(() => console.log("done"))
+                        .catch(() => console.log("notDone"))
+                        return res.status(200).json(data);
+                    } else {
+                        res.status(400).json("User Not Found");
+                    }
+                    })
+                .catch((err) => {
+                    console.log(err)
+                  return (
+                    res.status(404).json("Error:" + err)
+                  )
+                }); 
           });
   } catch (err) {
       return res.status(500).json({

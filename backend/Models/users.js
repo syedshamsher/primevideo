@@ -16,8 +16,9 @@ const userSchema = new Schema({
     fav:  {
         type: Array,
     },
-    subcription: {
-        type: Array,
+    subscription: {
+        type: Boolean,
+        default: false,
     }
 },
     {

@@ -2,16 +2,41 @@ import React from 'react'
 import styles from './styles.module.css'
 import {Divider} from '@material-ui/core'
 import InfoIcon from '@material-ui/icons/Info';
+import {useSelector, useDispatch} from 'react-redux';
+import {Redirect, useHistory, useLocation} from 'react-router-dom';
 import Axios from 'axios';
-
+import { getActiveUser } from '../../Redux/user/actions';
+import { SuccessMessage } from '../SuccessMessage/SuccessMessage';
 export const Payment = () => {
-
+  const {userdata, isAuth} = useSelector(state => state.auth)
+  const [loading, setLoading] = React.useState(false)
+  const history = useHistory();
+  const arr = history.location.search.split("=")
+  let price = arr[arr.length - 1]
+  const dispatch = useDispatch();
     const paymentHandler = async (e) => {
         e.preventDefault();
-    
+        var today = new Date();
+        var str = today.toGMTString();
+        let activeUser = userdata._id
+        let payload = {
+          user_id: activeUser,
+          order: {
+              amount: Number(price),
+              date: str,
+          },
+      }
         const API_URL = 'http://localhost:8001/'
         const orderUrl = `${API_URL}order`;
-        const response = await Axios.get(orderUrl);
+        let config = {
+            method: 'POST',
+            url: orderUrl,
+            data: payload,
+            headers: {
+              'Content-Type': 'application/json'
+            }
+        }
+        const response = await Axios(config);
         const { data } = response;
         const options = {
           name: "Prime RazorPay",
@@ -21,28 +46,46 @@ export const Payment = () => {
             try {
               const paymentId = response.razorpay_payment_id;
               const url = `${API_URL}capture/${paymentId}`;
-              const captureResponse = await Axios.post(url, {})
-              const successObj = JSON.parse(captureResponse.data)
-              const captured = successObj.captured;
-              if (captured) {
-                console.log('success')
+              config ={
+                method: 'POST',
+                url: url,
+                data: payload,
+                headers: {
+                  'Content-Type': 'application/json'
+                }
               }
+              await Axios(config)
+                .then((res) => {
+                  // alert("Your payment was Successfull, Redirecting to Home page...")
+                    setLoading(true)
+                    dispatch(getActiveUser())
+                    // setInterval(() => setLoading(false), 5000)
+                    setTimeout(() => setLoading(false), 15000)
+                } )
+                .catch((err) => alert("error"))
             } catch (err) {
-              console.log(err);
-            }
+                console.log(err);
+              }
+          },
+          modal: {
+          ondismiss: function() {
+              alert(`Payment Failed`)
+          }
+          },
+          prefill: {
+              email: userdata.email,
           },
           theme: {
-            color: "#c6203d",
+            color: "#082436",
           },
         };
         const rzp1 = new window.Razorpay(options);
         rzp1.open();
       };
-        
-
-
     return (
-        <div className={styles.wrapper}>
+       <>
+        { isAuth && loading && <div style={{display:"flex", alignItems:"center",justifyContent:"center", height:"50vh"}}><SuccessMessage/></div> }
+        { isAuth && userdata.subscription ? <Redirect to="/home" /> : ( <div className={styles.wrapper}>
             <header className={styles.header}>
                 <div className={styles.header_content_container}>
                     <img id="dv-signup-banner-logoimage" src="https://m.media-amazon.com/images/G/01/digital/video/acquisition/logo/prime_negative-v1._CB485946247_.png" alt="Prime"/>
@@ -70,6 +113,7 @@ export const Payment = () => {
                     Start a 30-day free trial with auto-renew. (Credit cards or a supported debit card from HDFC, Axis, Citi, ICICI, Kotak, Deutsche, and Canara eligible.)
                 </div>
             </div>
-        </div>
+        </div>)}
+       </>
     )
 }

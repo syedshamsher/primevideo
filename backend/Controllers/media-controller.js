@@ -6,39 +6,24 @@ const client = redis.createClient();
 const GET_ASYNC = promisify(client.get).bind(client);
 const SET_ASYNC = promisify(client.set).bind(client);
 
-const getAllMedia = async (req, res) => {
-  console.log("1");
-  try {
-    const reply = await GET_ASYNC("medias");
-    if (reply) {
-      console.log("Used REDIS cache");
-      return res.send(JSON.parse(reply));
-    }
-
-    const getMedia = (req, res) => {
-      const id = req.params.id;
-      console.log(req.params.id);
-      Medias.findById(id)
-        .then((media) => {
-          console.log(media);
-          return res.json(media);
-        })
-        .catch((err) => res.status(404).json("Media not Found"));
-    };
-
-    const response = await Medias.find();
-    const saveResult = await SET_ASYNC(
-      "medias",
-      JSON.stringify(response),
-      "EX",
-      600,
-    );
-    console.log("Data Cached into REDIS", saveResult);
-    res.send(response);
-  } catch (err) {
-    res.status(400).json("Error: " + err);
+const getAllMedia=async(req, res) => {
+  console.log("1")
+  try{
+      const reply=await GET_ASYNC("medias")
+      if(reply){
+          console.log("Used REDIS cache")
+          return res.send(JSON.parse(reply))
+      }
+      
+      const response=await Medias.find()
+      const saveResult=await SET_ASYNC("medias",JSON.stringify(response),"EX",600)
+      console.log("Data Cached into REDIS",saveResult)
+      res.send(response)
+  }    
+  catch(err){
+      res.status(400).json("Error: "+err)
   }
-};
+}
 
 const getMedia = (req, res) => {
   const id = req.params.id;

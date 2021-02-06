@@ -13,7 +13,7 @@ import {
 
 const initState = {
   isAuth: false,
-  userdata: "",
+  userdata: null,
   error: false,
   errormsg: "",
   status: "",
@@ -79,15 +79,18 @@ export const authReducer = (state = initState, { type, payload }) => {
         status: payload,
         error: true,
         errormsg: payload,
+        userdata:null,
+        isAuth: false,
       };
     }
 
     case LOGOUT: {
+      localStorage.removeItem('accesstoken')
       return {
         ...state,
         isAuth: false,
         userType: "user",
-        userdata: "",
+        userdata: null,
         watchlist: [],
       };
     }

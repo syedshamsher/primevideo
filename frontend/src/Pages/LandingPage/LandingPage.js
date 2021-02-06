@@ -3,6 +3,8 @@ import styles from './styles.module.css'
 import {Container, Grid} from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import {LandingNav} from '../../Components/LandingNav/LandingNav'
+import {useSelector} from 'react-redux'
+import { Redirect, useHistory } from 'react-router-dom'
 
 const useStyles = makeStyles({
     root : {
@@ -13,15 +15,21 @@ const useStyles = makeStyles({
 })
 
 const LandingPage = () => {
+    const { userdata, isAuth } = useSelector(state => state.auth) 
+    const history = useHistory();
 
     React.useEffect(() => {
     }, [])
+
+    const handlePayment = (amount) => {
+        history.push(`/payment?amount=${amount}`);
+    }
 
     const classes = useStyles();
 
     return (
                 <div className={styles.wrapper}>
-                    <LandingNav/>
+                    { isAuth && userdata.subscription ? <Redirect to="/home" /> : null }
                     <header
                         className={styles.banner}
                         style={{
@@ -40,7 +48,7 @@ const LandingPage = () => {
                                 <p className={styles.description} >
                                     Join Prime to watch the latest movies, TV shows and award-winning Amazon Originals
                                 </p>
-                                <button className={styles.landing_btn}>Start your 30-day free trial</button>
+                                <button onClick={() => handlePayment(399) } className={styles.landing_btn}>Start your 30-day free trial</button>
                             </div>
                             <div style={{flex:'1'}}> {` `} </div>
                         </div>
