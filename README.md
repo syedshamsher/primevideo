@@ -32,7 +32,13 @@
 
 ### Installation and Setup Instructions
 
-Clone down this repository. You will need node and npm installed globally on your machine. Installation: npm install To Run Test Suite: npm test To Start Server: npm start To Visit App: localhost:3000/
+Clone this repository. 
+You will need node and npm installed globally on your machine. You will also need Redis Server v3.05.
+Installation: npm install To install dependencies
+Redis: redis-server
+Run:npm run dev to run the App
+App runs on port 3000
+Server runs on port 8001
 
 ## Tech Library used:
   <ul>
@@ -79,4 +85,4 @@ Clone down this repository. You will need node and npm installed globally on you
   We Thank Masai for giving this opportunity <br/> We thank Mr.Albert, Ms.Santhisri and Mr.Dhaval for guiding us through this project <br/>
   We also would like to thank Mr.Albert, Mr.Nrupul, Mr.Abhishek and Mr.Yogesh for imparting their valuable knowledge.
 </div>
-<h2> Enjoy! </h2>
+<h2> Happy Hacking </h2>
