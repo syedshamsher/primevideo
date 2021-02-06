@@ -22,12 +22,13 @@
 
 
 ## <code>Sneak Peak</code>
+## <code>Landing Page</code>
 ![img](./screenshots/1.png)
 
 ## <code>Home Page</code>
 ![img](./screenshots/2.png)
 
-## <code>Home Page</code>
+## <code>TV Show</code>
 ![img](./screenshots/3.png)
 
 ### Installation and Setup Instructions
