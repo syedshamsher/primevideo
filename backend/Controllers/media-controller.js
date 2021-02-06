@@ -50,6 +50,7 @@ const getMedia = (req, res) => {
 };
 
 const getFavMedia = async (req, res) => {
+  console.log(req.body);
   const list = req.body.list;
   var arr = [],
     temp = "";
@@ -59,7 +60,7 @@ const getFavMedia = async (req, res) => {
     list.map(async (id, i) => {
       await Medias.findById({ _id: id }).then((data) => {
         arr.push(data);
-        // console.log(arr);
+        console.log(arr);
         if (i == list.length - 1) {
           res.status(200).send(arr);
         }
