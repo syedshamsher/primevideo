@@ -1,8 +1,8 @@
 import axios from "axios";
 import {
     FETCH_ALL_MEDIAS_REQUEST, FETCH_ALL_MEDIAS_SUCCESS, FETCH_ALL_MEDIAS_FAILURE,
-    SEARCH_SUCCESS, SEARCH_REQUEST, FETCH_MEDIA_SUCCESS, FETCH_MEDIA_SUCCESS2, FETCH_MEDIA_SUCCESS3, FETCH_MEDIA_FAILURE, FETCH_MEDIA_REQUEST,
-    SEARCH_FAILURE, ADD_TO_WISHLIST, REMOVE_FROM_WISHLIST, CLEAR_WISHLIST
+     FETCH_MEDIA_SUCCESS, FETCH_MEDIA_SUCCESS2, FETCH_MEDIA_SUCCESS3, FETCH_MEDIA_FAILURE, FETCH_MEDIA_REQUEST,
+     ADD_TO_WISHLIST, REMOVE_FROM_WISHLIST, CLEAR_WISHLIST
 } from "./actionTypes";
 
 const fetchAllMediasRequest = () => ({
@@ -68,32 +68,32 @@ export const fetchAllMedias = () => dispatch => {
     }
     return axios(config)
         .then((res) => {
-            console.log(res.data)
+            // console.log(res.data)
             dispatch(fetchAllMediasSuccess(res.data))
             return true
         }).catch((err) => {
-            console.log(err)
+            // console.log(err)
             dispatch(fetchAllMediasFailure(err))
         });
 }
 
 export const fetchMedia = (id) => dispatch => {
     dispatch(fetchMediaRequest())
-    console.log("req", id)
+    // console.log("req", id)
     const config = {
         method: 'get',
         url: `http://localhost:8001/api/medias/media/${id}`
     }
     return axios(config)
         .then((res) => {
-            console.log(res.data)
+            // console.log(res.data)
             dispatch(fetchMediaSuccess(res.data))
              if(res.data.media_type=="tv"){
                 axios({
                     method: 'get',
                     url: `https://api.themoviedb.org/3/tv/${res.data.id}/season/1?api_key=f68ad2333b36443da92e29b79b66f4f1&language=en-US`
                 }).then((resp) => {
-                    console.log(resp.data)
+                    // console.log(resp.data)
                     dispatch(fetchMediaSuccess3(resp.data))
                 })                
             }
@@ -101,25 +101,13 @@ export const fetchMedia = (id) => dispatch => {
                 method: 'get',
                 url: `https://api.themoviedb.org/3/${res.data.media_type}/${res.data.id}/credits?api_key=3da864401bca9475486c35cc206b3e2a&language=en-US`
             }).then((resp) => {
-                console.log(resp.data)
+                // console.log(resp.data)
                 dispatch(fetchMediaSuccess2(resp.data))
             })
             return true
         }).catch((err) => {
-            console.log(err)
+            // console.log(err)
             dispatch(fetchMediaFailure(err))
         });
 }
 
-// export const searchReq = (payload) => (dispatch) => {
-//     console.log("Initiating Search")
-//     const config = {
-//         method: 'get',
-//         url: `https://pentagon-shine.herokuapp.com/jobs?q=${payload.query}`,
-//     };
-
-//     return axios(config).then((res) => {
-//         console.log("result", res)
-//         dispatch(fetchAllJobsSuccess(res.data))
-//     })
-// }

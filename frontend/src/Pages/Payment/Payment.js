@@ -56,7 +56,7 @@ export const Payment = () => {
               }
               await Axios(config)
                 .then((res) => {
-                  // alert("Your payment was Successfull, Redirecting to Home page...")
+                   alert("Your payment was Successfull, Redirecting to Home page...")
                     setLoading(true)
                     dispatch(getActiveUser())
                     // setInterval(() => setLoading(false), 5000)
@@ -84,7 +84,7 @@ export const Payment = () => {
       };
     return (
        <>
-        { isAuth && loading && <div style={{display:"flex", alignItems:"center",justifyContent:"center", height:"50vh"}}><SuccessMessage/></div> }
+      {!isAuth && <Redirect to="/login" /> }
         { isAuth && userdata.subscription ? <Redirect to="/home" /> : ( <div className={styles.wrapper}>
             <header className={styles.header}>
                 <div className={styles.header_content_container}>

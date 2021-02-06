@@ -24,10 +24,10 @@ app.use("/api", userRoute);
 app.use("/", feedbackRoute);
 
 app.get("/video/:name", function (req, res) {
-  console.log("video", req.headers);
+  // console.log("video", req.headers);
   const title = req.params.name;
   const range = req.headers.range;
-  console.log(title, range);
+  // console.log(title, range);
   if (!range) {
     res.status(400).send("Range Headers missing");
   }
@@ -96,7 +96,7 @@ app.post("/capture/:paymentId", (req, res) => {
         }
         Users.findOne({ _id: user_id }, { subscription: 1, _id: 0 })
           .then((data) => {
-            console.log(data);
+            // console.log(data);
             if (data) {
               Users.findOneAndUpdate({ _id: user_id }, { subscription: true })
                 .then(() => console.log("done"))
@@ -107,7 +107,7 @@ app.post("/capture/:paymentId", (req, res) => {
             }
           })
           .catch((err) => {
-            console.log(err);
+             console.log(err);
             return res.status(404).json("Error:" + err);
           });
       },

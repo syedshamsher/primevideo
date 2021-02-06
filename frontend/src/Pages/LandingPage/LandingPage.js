@@ -16,13 +16,15 @@ const useStyles = makeStyles({
 
 const LandingPage = () => {
     const { userdata, isAuth } = useSelector(state => state.auth) 
+    // console.log(isAuth)
     const history = useHistory();
 
     React.useEffect(() => {
     }, [])
 
     const handlePayment = (amount) => {
-        history.push(`/payment?amount=${amount}`);
+        if(isAuth)history.push(`/payment?amount=${amount}`);
+        else history.push(`/login`);
     }
 
     const classes = useStyles();
@@ -48,7 +50,7 @@ const LandingPage = () => {
                                 <p className={styles.description} >
                                     Join Prime to watch the latest movies, TV shows and award-winning Amazon Originals
                                 </p>
-                                <button onClick={() => handlePayment(399) } className={styles.landing_btn}>Start your 30-day free trial</button>
+                                <button onClick={() => handlePayment(399) } className={styles.landing_btn}>Buy 3 months subscription @ Rs. 399/-</button>
                             </div>
                             <div style={{flex:'1'}}> {` `} </div>
                         </div>

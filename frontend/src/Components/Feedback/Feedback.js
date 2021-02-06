@@ -24,7 +24,7 @@ export const Feedback = ({ open, handleClose }) => {
   }, [msg]);
 
   const handleSubmit = () => {
-    console.log("submit");
+    // console.log("submit");
     dispatch(
       feedback({
         email: userdata.email,

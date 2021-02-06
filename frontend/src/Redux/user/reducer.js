@@ -6,7 +6,7 @@ import {
   REGISTER_SUCCESS,
   REGISTER_FAILURE,
   LOGOUT,
-  LOCATION_SUCCESS,
+
   SET_REGISTER,
   ADD_WATCHLIST,
 } from "./actionTypes";
@@ -47,7 +47,7 @@ export const authReducer = (state = initState, { type, payload }) => {
     }
 
     case LOGIN_FAILURE: {
-      console.log(payload);
+      // console.log(payload);
       return {
         ...state,
         isAuth: false,
@@ -95,12 +95,7 @@ export const authReducer = (state = initState, { type, payload }) => {
       };
     }
 
-    case LOCATION_SUCCESS: {
-      return {
-        ...state,
-        location: payload,
-      };
-    }
+ 
 
     case SET_REGISTER: {
       return {

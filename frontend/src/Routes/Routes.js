@@ -13,6 +13,7 @@ import PrivateRoute from "./PrivateRoute";
 import { Watchlist } from "../Pages/WatchList/Watchlist";
 import { Series } from "../Pages/Series/Series";
 import { Movies } from "../Pages/Movies/Movies";
+import { Footer } from "../Components/Footer/Footer";
 
 export const Routes = () => {
   return (
@@ -21,7 +22,7 @@ export const Routes = () => {
         <Route path="/login" exact render={() => <Login />} />
         <Route path="/register" exact render={() => <Register />} />
       <Switch>
-        <PrivateRoute path="/payment" exact MyComponent={Payment} />
+        <Route path="/payment" exact render={() => <Payment />} />
         <PrivateRoute path="/search" exact MyComponent={SearchResult} />
         <Route path="/" exact render={() => <LandingPage />} />
         <PrivateRoute path="/home" exact MyComponent={Feed} />
@@ -40,8 +41,8 @@ export const Routes = () => {
           path="/your-watchlist"
           exact
           MyComponent={Watchlist} />
-
       </Switch>
+      <Route path="/" render={() => <Footer></Footer>} />
     </div>
   );
 };

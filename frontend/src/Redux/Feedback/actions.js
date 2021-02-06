@@ -17,10 +17,10 @@ export const feedback = (payload) => (dispatch) => {
   };
   axios(config)
     .then(function (response) {
-      console.log(response.data);
+      // console.log(response.data);
       dispatch(setMsg(response.data.msg));
     })
     .catch(function (error) {
-      console.log(error);
+       console.log(error);
     });
 };

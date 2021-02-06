@@ -3,14 +3,10 @@ import {
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
   REGISTER_REQUEST,
-  REGISTER_SUCCESS,
   REGISTER_FAILURE,
   LOGOUT,
-  LOCATION_SUCCESS,
-  LOCATION_FAILURE,
   SET_REGISTER,
   ADD_WATCHLIST,
-  TEMP_UPDATE,
   GET_ACTIVE_USER
 } from "./actionTypes";
 import axios from "axios";
@@ -41,12 +37,6 @@ const registerRequest = () => {
     type: REGISTER_REQUEST,
   };
 };
-const registerSuccess = (payload) => {
-  return {
-    type: REGISTER_SUCCESS,
-    payload: payload,
-  };
-};
 
 const registerFailure = (error) => {
   return {
@@ -55,18 +45,7 @@ const registerFailure = (error) => {
   };
 };
 
-const locationSuccess = (payload) => {
-  return {
-    type: LOCATION_SUCCESS,
-    payload: payload,
-  };
-};
-const locationFailure = (error) => {
-  return {
-    type: LOCATION_FAILURE,
-    payload: error,
-  };
-};
+
 
 export const logout = () => {
   return {
@@ -161,7 +140,7 @@ export const Regreq = (payload) => (dispatch) => {
       console.log(res);
       dispatch(setRegister(true));
       // dispatch(registerSuccess(res.data));
-      
+
       return true;
     })
     .catch((res) => {
@@ -170,40 +149,8 @@ export const Regreq = (payload) => (dispatch) => {
     });
 };
 
-export const locationRequest = (lat, lon) => (dispatch) => {
-  const config = {
-    method: "get",
-    url: `http://api.positionstack.com/v1/reverse?access_key=f96b3362dc68e6e5593e173333a49d96&query=${lat},${lon}`,
-  };
-  console.log("1231", lat, lon);
-  return axios(config)
-    .then((res) => {
-      console.log("loc", res.data.data);
-      dispatch(locationSuccess(res.data.data[0]));
-      return true;
-    })
-    .catch((err) => {
-      console.log("error", err);
-      dispatch(locationFailure(err));
-    });
-};
 
-export const addOrder = (id, payload) => (dispatch) => {
-  const config = {
-    method: "put",
-    url: `http://localhost:8001/api/users/orderAdd/${id}`,
-    data: payload,
-  };
 
-  return axios(config)
-    .then((res) => {
-      console.log("Order Add Success");
-      return true;
-    })
-    .catch((res) => {
-      console.log("error", res.response.data);
-    });
-};
 
 export const newWatchList = (payload) => (dispatch) => {
   // dispatch(tempupdate(payload))

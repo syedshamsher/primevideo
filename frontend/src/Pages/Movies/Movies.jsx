@@ -17,10 +17,10 @@ export const Movies = () => {
     const anime = useSelector(state => state.medias.anime)
     const english = useSelector(state => state.medias.english)
     const regional = useSelector(state => state.medias.regional)
-    console.log(media,tv,movie,anime,english,regional)
+    // console.log(media,tv,movie,anime,english,regional)
 
     React.useEffect(() => {
-        console.log("Calling")
+        // console.log("Calling")
         dispatch(fetchAllMedias())
     }, [])
 

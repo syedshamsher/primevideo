@@ -7,7 +7,7 @@ const GET_ASYNC = promisify(client.get).bind(client);
 const SET_ASYNC = promisify(client.set).bind(client);
 
 const getAllMedia=async(req, res) => {
-  console.log("1")
+  
   try{
       const reply=await GET_ASYNC("medias")
       if(reply){
@@ -35,7 +35,7 @@ const getMedia = (req, res) => {
 };
 
 const getFavMedia = async (req, res) => {
-  console.log(req.body);
+  
   const list = req.body.list;
   var arr = [],
     temp = "";
@@ -45,18 +45,17 @@ const getFavMedia = async (req, res) => {
     list.map(async (id, i) => {
       await Medias.findById({ _id: id }).then((data) => {
         arr.push(data);
-        console.log(arr);
+        
         if (i == list.length - 1) {
           res.status(200).send(arr);
         }
       });
     });
-    console.log("arr", arr);
+    
   }
 };
 
-const searchResult = (req, res) => {
-  // console.log(req.body);
+const searchResult = (req, res) => {  
   let query = req.body.query;
   Medias.find({ title: { $regex: query, $options: "$i" } }).then((data) => {
     res.status(200).send(data);

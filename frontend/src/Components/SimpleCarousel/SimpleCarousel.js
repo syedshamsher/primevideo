@@ -19,7 +19,7 @@ export const SimpleCarousel = (props) => {
     const [num, setNum] = React.useState(4)
 
     React.useEffect(() => {
-        console.log(size)
+        // console.log(size)
         if (size == "xs") setNum(2)
         if (size == "lg") setNum(4)
         if (size == "xl") setNum(6)
@@ -28,10 +28,10 @@ export const SimpleCarousel = (props) => {
 
     SwiperCore.use([Navigation, Pagination, Autoplay, EffectFade]);
     const history = useHistory()
-    console.log(props.media)
+    // console.log(props.media)
     const tv = useSelector(state => state.medias.tv)
     React.useEffect(() => {
-        console.log(props)
+        // console.log(props)
 
     }, [props])
 
@@ -64,7 +64,7 @@ export const SimpleCarousel = (props) => {
             {
                 props.media.length > 0 && props.media.map((item) => (
                     <SwiperSlide className={styles.subContainer} >
-                        <div className={styles.Slide} onMouseEnter={(item) => console.log("asd", item._id)}
+                        <div className={styles.Slide}
                             key={item._id}
 
                             onClick={() => handleClick(item._id)} >

@@ -5,6 +5,9 @@
   font-family: "Amazon Ember",Arial,sans-serif;
 }
 
+::-webkit-scrollbar{
+  display:none
+}
 
 .App {
  

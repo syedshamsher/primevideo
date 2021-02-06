@@ -4,7 +4,7 @@ const nodemailer = require("nodemailer");
 require("dotenv").config();
 
 router.post("/feedback", (req, res) => {
-  console.log(req.body);
+  // console.log(req.body);
   let transporter = nodemailer.createTransport({
     service: "Gmail",
     auth: {
@@ -258,7 +258,7 @@ router.post("/feedback", (req, res) => {
           <td>&nbsp;</td>
           <td class="container">
             <div class="content">
-              <span class="preheader">Subscribe to Coloured.com.ng mailing list</span>
+              <span class="preheader">Subscribe to PrimeVideo.com.ng mailing list</span>
               <table class="main">
                 <!-- START MAIN CONTENT AREA -->
                 <tr>

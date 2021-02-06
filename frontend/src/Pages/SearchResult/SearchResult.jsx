@@ -30,11 +30,11 @@ export function SearchResult(props) {
 
   const classes = useStyles();
 
-  console.log(searched);
+  // console.log(searched);
 
   useEffect(() => {
     let temp = history.location.search.split("=")[1];
-    console.log(temp);
+    // console.log(temp);
     dispatch(searchQuery({ query: temp }));
   }, [history.location.search]);
 
@@ -51,7 +51,7 @@ export function SearchResult(props) {
     return str?.length > n ? str.substr(0, n - 1) + "..." : str;
   }
   return (
-    <div>
+    <div><h1 style={{marginLeft:"40px"}}>Search Results</h1>
       <div className={styles.main_container} style={{ marginLeft: "-20px" }}>
         <Grid container spacing={1}>
           {searched.length > 0 &&
