@@ -55,7 +55,7 @@ export const Register = () => {
         </Snackbar>
       )}
       <div className={styles.form_wrapper}>
-        <h2 className={styles.form_heading}>Sign-In</h2>
+        <h2 className={styles.form_heading}>Create Account</h2>
         <Box>
           <div className={styles.input_wrapper}>
             <label className={styles.label}>Your name</label>
@@ -101,7 +101,7 @@ export const Register = () => {
             />
           </div>
           <div>
-            {!checker ? <div>Password is not match</div> : null}
+            {!checker ? <div>Password does not match, Please retry!</div> : null}
             <button
               className={styles.btn_primary}
               onClick={handleSubmit}

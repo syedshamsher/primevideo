@@ -10,6 +10,8 @@ import {
   LOCATION_FAILURE,
   SET_REGISTER,
   ADD_WATCHLIST,
+  TEMP_UPDATE,
+  GET_ACTIVE_USER
 } from "./actionTypes";
 import axios from "axios";
 const loginRequest = (uname, pass) => {
@@ -85,6 +87,8 @@ export const updateWatchList = (payload) => {
     payload,
   };
 };
+
+
 
 export const getActiveUser = () => (dispatch) => {
   const accessToken = localStorage.getItem('accesstoken');
@@ -202,6 +206,7 @@ export const addOrder = (id, payload) => (dispatch) => {
 };
 
 export const newWatchList = (payload) => (dispatch) => {
+  // dispatch(tempupdate(payload))
   var config = {
     method: "put",
     url: "http://localhost:8001/api/add_watchlist",
@@ -214,6 +219,7 @@ export const newWatchList = (payload) => (dispatch) => {
   axios(config)
     .then(function (response) {
       dispatch(updateWatchList(response.data));
+      dispatch(getActiveUser())
     })
     .catch(function (error) {
       console.log(error);

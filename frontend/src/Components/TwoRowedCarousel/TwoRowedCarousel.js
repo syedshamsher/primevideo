@@ -10,6 +10,9 @@ import { useDispatch } from "react-redux"
 import { fetchAllMedias } from '../../Redux/MediaRedux/actions'
 import Paper from '@material-ui/core/Paper';
 import PlayCircleFilledWhiteIcon from '@material-ui/icons/PlayCircleFilledWhite';
+import PlayArrowOutlined from '@material-ui/icons/PlayArrowOutlined';
+import AddIcon from '@material-ui/icons/Add';
+import SpeakerNotesIcon from '@material-ui/icons/SpeakerNotes';
 
 export const TwoRowedCarousel = () => {
     const history = useHistory()
@@ -28,6 +31,9 @@ export const TwoRowedCarousel = () => {
         history.push(`/player/song2`)
         e.stopPropagation()
     }
+    function truncate(str, n) {
+        return str?.length > n ? str.substr(0, n - 1) + "..." : str;
+      }
 
     if (isLoading) return <div>Loading...</div>
     return (
@@ -58,10 +64,29 @@ export const TwoRowedCarousel = () => {
                                 {item.original_title} </div>  */}
                                 <img src={item.backdrop_path} width="100%" style={{ width: "100%", objectFit: "contain"}}></img>
                                 <div className={styles.hidden} >
-                                <button style={{ alignContent: "center", alignItems: "center", textAlign: "center" }} onClick={(e) => handleClick1(item._id, e)} >
-                                    < PlayCircleFilledWhiteIcon fontSize="large" /> Continue Watching </button>
-                                <div style={{ fontSize: "30px", color: "white" }} > {item.original_title} </div>
-                                <div style={{ marginTop: "15px", fontSize: "17px" }} > {item.overview} </div>
+                                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: '21%' }}  >
+                                    <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }} >
+                                        <div className={styles.play_icon} style={{ color: 'white', border: '2px solid white', borderRadius: "50%", height: '30px', width: '30px', display: 'flex', alignItems: 'center', justifyContent: 'center',marginBottom:"5px" }} >
+                                            <PlayArrowOutlined fontSize="large" />
+                                        </div>
+                                        <div style={{ marginLeft: '10px' }} >Play</div>
+                                    </div>
+                                    <div>
+                                        <PlayCircleFilledWhiteIcon style={{ marginRight: '10px' }} />
+                                        <AddIcon />
+                                    </div>
+                                </div>
+                                <div>
+                                    <h1 style={{ fontSize: "15px", color: "white", lineHeight: "1px" }} > {item.original_title} </h1>
+                                    <p className={styles.overview} > {truncate(item?.overview, 100)} </p>
+                                </div>
+                                <div style={{ display: 'flex', width: "100%", justifyContent: "space-between", marginTop: "1px", alignItems: "center", color: "#8197a4", fontSize: '12px' }}>
+                                    <div>1 h 42 min</div>
+                                    <div> {item.release_date.substring(0, 4)} </div>
+                                    <div style={{ fontSize: "11px", border: "1px solid #8197a4", fontWeight: "bold", borderRadius: "2px", padding: "2px" }}>X-ray</div>
+                                    <div style={{ fontSize: "11px", border: "1px solid #8197a4", fontWeight: "bold", borderRadius: "2px", padding: "2px" }}>18+</div>
+                                    <SpeakerNotesIcon />
+                                </div>
                             </div >
                         </div>
                     </SwiperSlide >

@@ -7,20 +7,23 @@ import { useHistory } from 'react-router-dom';
 import PlayCircleFilledWhiteIcon from '@material-ui/icons/PlayCircleFilledWhite';
 import { useSelector } from "react-redux"
 import { useResponsive } from 'react-hooks-responsive'
+import PlayArrowOutlined from '@material-ui/icons/PlayArrowOutlined';
+import AddIcon from '@material-ui/icons/Add';
+import SpeakerNotesIcon from '@material-ui/icons/SpeakerNotes';
 
 
-const breakpoints = { xs: 0, sm: 480, md: 640, lg:720, xl:2048 }
+const breakpoints = { xs: 0, sm: 480, md: 640, lg: 720, xl: 2048 }
 
 export const SimpleCarousel = (props) => {
     const { size, orientation, screenIsAtLeast, screenIsAtMost } = useResponsive(breakpoints)
-    const [num,setNum]=React.useState(4)
+    const [num, setNum] = React.useState(4)
 
     React.useEffect(() => {
         console.log(size)
-        if(size=="xs")setNum(2)
-        if(size=="lg")setNum(4)
-        if(size=="xl")setNum(6)
-        
+        if (size == "xs") setNum(2)
+        if (size == "lg") setNum(4)
+        if (size == "xl") setNum(6)
+
     }, [size])
 
     SwiperCore.use([Navigation, Pagination, Autoplay, EffectFade]);
@@ -41,14 +44,18 @@ export const SimpleCarousel = (props) => {
         e.stopPropagation()
     }
 
+    function truncate(str, n) {
+        return str?.length > n ? str.substr(0, n - 1) + "..." : str;
+      }
+
     return (<div className="prime" >
 
         <Swiper spaceBetween={10}
             slidesPerView={num}
             slidesPerColumn={1}
-            navigation={{ nextEl: '.swiper-button2', prevEl:'.swiper-button2'}}
+            navigation={{ nextEl: '.swiper-button2', prevEl: '.swiper-button2' }}
             navigation speed={800}
-            scrollbar={{ draggable: true , hide:true, el: '.swiper-scrollbar'}}
+            scrollbar={{ draggable: true, hide: true, el: '.swiper-scrollbar' }}
             onSwiper={(swiper) => console.log(swiper)}
             onSlideChange={() => console.log("slide change")}
             slidesPerColumnFill={"row"}
@@ -57,18 +64,37 @@ export const SimpleCarousel = (props) => {
             {
                 props.media.length > 0 && props.media.map((item) => (
                     <SwiperSlide className={styles.subContainer} >
-                        <div className={styles.Slide} onMouseEnter={(item)=>console.log("asd",item._id)}
+                        <div className={styles.Slide} onMouseEnter={(item) => console.log("asd", item._id)}
                             key={item._id}
-                            
+
                             onClick={() => handleClick(item._id)} >
                             {/* <div style={{ padding: "10px", fontFamily: 'Nunito', fontSize: "30px", marginTop: "160px", letterSpacing: "2px" }} >
                                 {item.original_title} </div>  */}
-                                <img src={item.backdrop_path} width="100%" style={{ width: "100%", objectFit: "contain"}}></img>
-                                <div className={styles.hidden} >
-                                <button style={{ alignContent: "center", alignItems: "center", textAlign: "center" }} onClick={(e) => handleClick1(item._id, e)} >
-                                    < PlayCircleFilledWhiteIcon fontSize="large" /> Continue Watching </button>
-                                <div style={{ fontSize: "30px", color: "white" }} > {item.original_title} </div>
-                                <div style={{ marginTop: "15px", fontSize: "17px" }} > {item.overview} </div>
+                            <img src={item.backdrop_path} width="100%" style={{ width: "100%", objectFit: "contain" }}></img>
+                            <div className={styles.hidden} >
+                                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: '21%' }}  >
+                                    <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }} >
+                                        <div className={styles.play_icon} style={{ color: 'white', border: '2px solid white', borderRadius: "50%", height: '30px', width: '30px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom:"5px" }} >
+                                            <PlayArrowOutlined fontSize="large" />
+                                        </div>
+                                        <div style={{ marginLeft: '10px' }} >Play</div>
+                                    </div>
+                                    <div>
+                                        <PlayCircleFilledWhiteIcon style={{ marginRight: '10px' }} />
+                                        <AddIcon />
+                                    </div>
+                                </div>
+                                <div>
+                                    <h1 style={{ fontSize: "15px", color: "white", lineHeight: "1px" }} > {item.original_title} </h1>
+                                    <p className={styles.overview} > {truncate(item?.overview, 100)} </p>
+                                </div>
+                                <div style={{ display: 'flex', width: "100%", justifyContent: "space-between", marginTop: "1px", alignItems: "center", color: "#8197a4", fontSize: '12px' }}>
+                                    <div>1 h 42 min</div>
+                                    <div> {item.release_date.substring(0, 4)} </div>
+                                    <div style={{ fontSize: "11px", border: "1px solid #8197a4", fontWeight: "bold", borderRadius: "2px", padding: "2px" }}>X-ray</div>
+                                    <div style={{ fontSize: "11px", border: "1px solid #8197a4", fontWeight: "bold", borderRadius: "2px", padding: "2px" }}>18+</div>
+                                    <SpeakerNotesIcon />
+                                </div>
                             </div >
                         </div>
                     </SwiperSlide >

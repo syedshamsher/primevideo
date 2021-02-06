@@ -10,3 +10,4 @@ export const LOCATION_FAILURE = "LOCATION_FAILURE";
 export const SET_REGISTER = "SET_REGISTER";
 export const ADD_WATCHLIST = "ADD_WATCHLIST";
 export const GET_ACTIVE_USER = "GET_ACTIVE_USER";
+export const TEMP_UPDATE = "TEMP_UPDATE";

@@ -21,7 +21,7 @@
 .hidden {
   width:100% !important;
   display: none !important;
-  color: khaki !important;
+  color: white !important;
 }
 
 
@@ -73,4 +73,18 @@
 
 .swiper-button3{
   margin-left: -50px;
+}
+
+.overview {
+  font-size: 12px;
+  /* display: block; */
+  font-weight: 700;
+  white-space: normal;
+  line-height: 18px;
+  width: 100%
+}
+
+.play_icon:hover {
+  background-color: #0d97db;
+  border: 2px solid #0f79af;
 }

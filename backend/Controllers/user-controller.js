@@ -87,33 +87,35 @@ const userLogin = async (req, res, next) => {
 };
 
 const updateFavList = async (req, res) => {
-  console.log(req.body);
+  console.log(req.body.mediaId);
   let id = req.body.id;
   let mediaId = req.body.mediaId;
+  let temp = [];
   await Users.findOne({ _id: id }, { fav: 1, _id: 0 }).then((data) => {
-    let count = 0;
-    let temp = data.fav.filter((el) => {
-      console.log("el", el);
-      if (el == mediaId) {
-        count += 1;
-      } else {
-        return el;
-      }
-    });
-    console.log("count", count);
-    if (count == 0) {
-      temp.push(mediaId);
-    }
-    // Users.findOneAndUpdate({ _id: id }, { fav: temp }).then((data) =>
-    //   res.status(200).json(data.fav),
-    // );
-
-    console.log("temp", temp);
-    res.status(200).send(temp);
+    // console.log(data.fav);
+    temp = data.fav;
   });
+  let count = 0;
+  temp = temp.filter((el) => {
+    // console.log("el", el);
+    if (el._id == mediaId._id) {
+      count += 1;
+    } else {
+      return el;
+    }
+  });
+  console.log("count", count);
+  if (count == 0) {
+    temp.push(mediaId);
+  }
+  console.log("temp", temp);
+  Users.findOneAndUpdate({ _id: id }, { fav: temp }).then((data) =>
+    res.status(200).json(data.fav),
+  );
 };
 
-module.exports = { getUser, addUser, userLogin, updateFavList };
+
+module.exports = { getUser, addUser, userLogin, updateFavList ,getUserById};
 
 // const updateFavList = (req, res) => {
 //   console.log(req.body);

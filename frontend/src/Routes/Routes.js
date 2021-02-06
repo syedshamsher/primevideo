@@ -11,6 +11,8 @@ import { LandingPage } from "../Pages/LandingPage/LandingPage";
 import { Payment } from "../Pages/Payment/Payment";
 import PrivateRoute from "./PrivateRoute";
 import { Watchlist } from "../Pages/WatchList/Watchlist";
+import { Series } from "../Pages/Series/Series";
+import { Movies } from "../Pages/Movies/Movies";
 
 export const Routes = () => {
   return (
@@ -23,6 +25,8 @@ export const Routes = () => {
         <PrivateRoute path="/search" exact MyComponent={SearchResult} />
         <Route path="/" exact render={() => <LandingPage />} />
         <PrivateRoute path="/home" exact MyComponent={Feed} />
+        <PrivateRoute path="/tv-shows" exact MyComponent={Series} />
+        <PrivateRoute path="/movies" exact MyComponent={Movies} />
         <PrivateRoute
           path="/media/:id"
           exact
@@ -32,6 +36,11 @@ export const Routes = () => {
           path="/player/:title"
           exact
           MyComponent={MediaPlayer} />
+          <PrivateRoute
+          path="/your-watchlist"
+          exact
+          MyComponent={Watchlist} />
+
       </Switch>
     </div>
   );

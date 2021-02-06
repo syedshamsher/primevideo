@@ -12,11 +12,14 @@ import SpeakerNotesIcon from '@material-ui/icons/SpeakerNotes';
 import GetAppIcon from '@material-ui/icons/GetApp';
 import { fetchMedia } from '../../Redux/MediaRedux/actions'
 import styles from './styles.module.css'
+import { getActiveUser, newWatchList } from '../../Redux/user/actions'
 
 
 const ViewMedia = () => {
     const { id } = useParams()
     const isLoading = useSelector(state => state.medias.isLoading)
+    const userData = useSelector(state => state.auth.userdata)
+    const WA = useSelector(state => state.auth.watchlist)
     const media = useSelector(state => state.medias.currmedia)
     const cast = useSelector(state => state.medias.cast)
     console.log(truncate((cast.join()), 30))
@@ -26,6 +29,7 @@ const ViewMedia = () => {
     console.log(id, isLoading, media)
     const dispatch = useDispatch()
     const history = useHistory()
+    console.log(userData)
 
     var language = ""
     if (media.original_language == "ja") language = "Japanese"
@@ -35,6 +39,9 @@ const ViewMedia = () => {
     if (media.original_language == "ta") language = "Tamil"
     if (media.original_language == "ru") language = "Russian"
 
+    
+    const[added,setAdded]=React.useState(false)
+
 
     // const useMountEffect = (fun) => useEffect(fun, [])
     // useMountEffect(dispatch(fetchMedia(id)))
@@ -42,13 +49,28 @@ const ViewMedia = () => {
     React.useEffect(() => {
         console.log("Calling")
         dispatch(fetchMedia(id))
-    }, [])
+        for(var i=0;i<userData.fav.length;i++){
+            console.log("object",userData.fav[i]._id)
+            if(userData.fav[i]._id==media._id){
+            setAdded(true)
+            break
+            }
+        } console.log(added)
+    }, [added])
+
+  
 
     function truncate(str, n) {
         return str?.length > n ? str.substr(0, n - 1) + "..." : str;
     }
     const handleClick = () => {
         history.push(`/player/song2`)
+    }
+
+    const handleAdd=(payload)=>{
+        console.log(userData._id,payload)
+        dispatch(newWatchList({id:userData._id,mediaId:payload}))        
+        setAdded(!added)
     }
 
 
@@ -100,8 +122,8 @@ const ViewMedia = () => {
                                         <PlayArrowOutlined fontSize="large" />
                                         <div>Watch Trailer</div>
                                     </div>
-                                    <div onClick={handleClick} className={styles.banner_btn_add}>
-                                        <div>Add to Watchlist</div>
+                                    <div onClick={()=>handleAdd(media)} className={styles.banner_btn_add}>
+                                        <div>{added? ("Remove From Watchlist"):("Add to WatchList")}</div>
                                     </div>
                                     <div onClick={handleClick} className={styles.banner_btn_download}>
                                         <GetAppIcon fontSize="large" />
@@ -188,8 +210,8 @@ const ViewMedia = () => {
                                         <PlayArrowOutlined fontSize="large" />
                                         <div>Watch Trailer</div>
                                     </div>
-                                    <div onClick={handleClick} className={styles.banner_btn_add}>
-                                        <div>Add to Watchlist</div>
+                                    <div onClick={()=>handleAdd(media)} className={styles.banner_btn_add}>
+                                        <div>{added? ("Remove From Watchlist"):("Add to WatchList")}</div>
                                     </div>
                                     <div onClick={handleClick} className={styles.banner_btn_download}>
                                         <GetAppIcon fontSize="large" />
@@ -316,8 +338,8 @@ const ViewMedia = () => {
                                         <PlayArrowOutlined fontSize="large" />
                                         <div>Watch Trailer</div>
                                     </div>
-                                    <div onClick={handleClick} className={styles.banner_btn_add}>
-                                        <div>Add to Watchlist</div>
+                                    <div onClick={()=>handleAdd(media)} className={styles.banner_btn_add}>
+                                        <div>{added? ("Remove From Watchlist"):("Add to WatchList")}</div>
                                     </div>
                                     <div onClick={handleClick} className={styles.banner_btn_download}>
                                         <GetAppIcon fontSize="large" />
