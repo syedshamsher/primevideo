@@ -9,12 +9,11 @@ import { useDispatch } from "react-redux"
 import PlayCircleFilledWhiteIcon from '@material-ui/icons/PlayCircleFilledWhite';
 import { fetchAllMedias } from '../../Redux/MediaRedux/actions'
 
-export const BannerCarousel = () => {
+export const BannerCarousel = (props) => {
 
     const history = useHistory()
     const dispatch = useDispatch()
-    const main = useSelector(state => state.medias.main)
-    const isLoading = useSelector(state => state.medias.isLoading)
+    const main = useSelector(state => state.medias.main)    
     SwiperCore.use([Navigation, Pagination, Autoplay, EffectFade])
     console.log(main)
 
@@ -44,7 +43,7 @@ export const BannerCarousel = () => {
             className="swipermain"        
         >
             {
-                main.length > 0 && main.map((item) => (
+                props.media.length > 0 && props.media.map((item) => (
                     <SwiperSlide style={{ backgroundColor: "#0F171E" }}>
                         <div style={{ backgroundImage: `url("${item.backdrop_path}")`, backgroundSize: "100% 100%",height:"100%", width: "105%", borderRadius: "5px" }} onClick={() => handleClick(item._id)}>
                     </div>

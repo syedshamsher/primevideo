@@ -8,8 +8,10 @@ import { useDispatch } from "react-redux"
 
 export const Series = () => {
     const dispatch = useDispatch()
-    const isLoading = useSelector(state => state.medias.isLoading)
+    const isLoading = useSelector(state => state.medias.isLoading)    
+    const main = useSelector(state => state.medias.main)
     const media = useSelector(state => state.medias.medias)
+    const media1 = useSelector(state => state.medias.media1)
     const tv = useSelector(state => state.medias.tv)
     const movie = useSelector(state => state.medias.movie)
     const anime = useSelector(state => state.medias.anime)
@@ -22,32 +24,36 @@ export const Series = () => {
         dispatch(fetchAllMedias())
     }, [])
 
+    const TV1=main.filter((item)=>item.media_type=="tv")
+    const TVtrend=tv.filter((item)=>item.media_type=="tv")
+    const TVtop=media1.filter((item)=>item.media_type=="tv")
+    const TVen=english.filter((item)=>item.media_type=="tv")
+    const TVreg=regional.filter((item)=>item.media_type=="tv")
 
-    if (isLoading) return <div>Loading...</div> 
+
+    if(isLoading) return <div>Loading...</div> 
 
     return (
         <div style={{height:"max-content", background:"#0F171E", display:"flex", flexDirection:"column"}}>
             
             <div >
-                <BannerCarousel/>
+                <BannerCarousel
+                media={TV1}
+                />
             </div>
-            <div style={{fontSize:"20px",fontWeight:700, color:"white", marginLeft:"40px" }}>Top TV Shows </div>
+            <div style={{fontSize:"20px",fontWeight:700, color:"white", marginLeft:"40px" }}>Trending Now </div>
             <div><SimpleCarousel
-                media={tv}/></div>
-            <div style={{fontSize:"20px",fontWeight:700, color:"white", marginLeft:"40px" }}>Top Movies </div>
-            <div><SimpleCarousel
-                media={movie}/></div>
+                media={TVtrend}/></div>           
             <div style={{fontSize:"20px",fontWeight:700, color:"white", marginLeft:"40px" }}>Most Viewed</div>
-            <div><TwoRowedCarousel/></div>
-            <div style={{fontSize:"20px",fontWeight:700, color:"white", marginLeft:"40px" }}>Top English  </div>
+            <div><TwoRowedCarousel
+            media={TVtop}/></div>
+            <div style={{fontSize:"20px",fontWeight:700, color:"white", marginLeft:"40px" }}>Top English Series  </div>
             <div><SimpleCarousel
-                media={english}/></div>
-            <div style={{fontSize:"20px",fontWeight:700, color:"white", marginLeft:"40px" }}>Top Regional </div>
+                media={TVen}/></div>
+            <div style={{fontSize:"20px",fontWeight:700, color:"white", marginLeft:"40px" }}>Top Regional Series </div>
             <div><SimpleCarousel
-                media={regional}/></div>
-            <div style={{fontSize:"20px",fontWeight:700, color:"white", marginLeft:"40px" }}>Top Anime  </div>
-            <div><SimpleCarousel
-                media={anime}/></div>
+                media={TVreg}/></div>
+           
         </div>
     )
 }

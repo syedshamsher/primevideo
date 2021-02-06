@@ -96,7 +96,7 @@ const ViewMedia = () => {
                         }}
                     >
                         <div style={{width:"90%", minHeight:"100%", zIndex:5, background: "linear-gradient(270deg, rgba(255,255,255,0) 0%, rgba(28,38,48,1) 50%, rgba(28,38,48,1) 100%)"}} ></div>
-                        <video height="100%" width="60%" style={{ marginTop: "0px", top:0,position:"absolute",right:0, objectFit: "fill",zIndex:3 }} autoplay onMouseEnter={(e) => e.target.play()} muted>
+                        <video height="100%" width="60%" style={{ marginTop: "0px", top:0,position:"absolute",right:0, objectFit: "fill",zIndex:3 }} autoPlay onMouseEnter={(e) => e.target.play()} muted loop>
                             <source src="http://localhost:8001/video/soul" type="video/mp4" /></video>
                         <div className={styles.container} style={{ marginTop: "-700px", zIndex: 10 }}>
                             <div style={{ display: 'flex', flexDirection: 'column', flex: '2', alignItems: 'start', marginLeft: '5%' , marginTop:"-100px"}} >
@@ -145,7 +145,7 @@ const ViewMedia = () => {
                             </div>
                             <div style={{ flex: '1' }} > {` `} </div>
                         </div>
-                        <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '50px' }}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '50px', zIndex:1000}}>
                             <div style={{ color: "#8197a4", fontSize: '15px', marginLeft: '5%' }}>
                                 By clicking play, <span style={{ color: '#79b8f3' }}>you agree to our Terms of Use.</span>
                             </div>
