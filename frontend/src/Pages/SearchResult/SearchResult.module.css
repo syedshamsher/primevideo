@@ -12,12 +12,17 @@
     background-color: #0F171E;  
 } */
 
+.main_container::-webkit-scrollbar{
+    display: none;
+}
+
 .Slide{
    
     height:220px !important;
     
     padding: 20px;
     border-radius: 5px;
+
 }
 
 .hidden {
