@@ -9,7 +9,9 @@ import { useDispatch } from "react-redux"
 export const Feed = () => {
     const dispatch = useDispatch()
     const isLoading = useSelector(state => state.medias.isLoading)
+    const main = useSelector(state => state.medias.main)
     const media = useSelector(state => state.medias.medias)
+    const media1 = useSelector(state => state.medias.media1)
     const tv = useSelector(state => state.medias.tv)
     const movie = useSelector(state => state.medias.movie)
     const anime = useSelector(state => state.medias.anime)
@@ -29,7 +31,9 @@ export const Feed = () => {
         <div style={{height:"max-content", background:"#0F171E", display:"flex", flexDirection:"column"}}>
             
             <div >
-                <BannerCarousel/>
+                <BannerCarousel
+                media={main}
+                />
             </div>
             <div style={{fontSize:"20px",fontWeight:700, color:"white", marginLeft:"40px" }}>Top TV Shows </div>
             <div><SimpleCarousel
@@ -38,7 +42,8 @@ export const Feed = () => {
             <div><SimpleCarousel
                 media={movie}/></div>
             <div style={{fontSize:"20px",fontWeight:700, color:"white", marginLeft:"40px" }}>Most Viewed</div>
-            <div><TwoRowedCarousel/></div>
+            <div><TwoRowedCarousel
+            media={media1}/></div>
             <div style={{fontSize:"20px",fontWeight:700, color:"white", marginLeft:"40px" }}>Top English  </div>
             <div><SimpleCarousel
                 media={english}/></div>

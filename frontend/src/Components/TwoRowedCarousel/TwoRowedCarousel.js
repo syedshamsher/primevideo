@@ -14,14 +14,13 @@ import PlayArrowOutlined from '@material-ui/icons/PlayArrowOutlined';
 import AddIcon from '@material-ui/icons/Add';
 import SpeakerNotesIcon from '@material-ui/icons/SpeakerNotes';
 
-export const TwoRowedCarousel = () => {
+export const TwoRowedCarousel = (props) => {
     const history = useHistory()
     const dispatch = useDispatch()
 
   
 
     SwiperCore.use([Navigation, Pagination, Autoplay, EffectFade,Scrollbar])
-    const media1 = useSelector(state => state.medias.media1)
     const isLoading = useSelector(state => state.medias.isLoading)
     const handleClick = (id) => {
         history.push(`/media/${id}`)
@@ -54,7 +53,7 @@ export const TwoRowedCarousel = () => {
             >
 
                 {
-                    media1.length > 0 && media1.map((item) => (
+                    props.media.length > 0 && props.media.map((item) => (
                         <SwiperSlide className={styles.subContainer} >
                         <div className={styles.Slide} onMouseEnter={(item)=>console.log("asd",item._id)}
                             key={item._id}
