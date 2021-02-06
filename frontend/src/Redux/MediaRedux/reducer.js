@@ -48,7 +48,7 @@ export const mediasReducer = (state = initialState, { type, payload }) => {
                 if (payload[i].type == "main")
                     carmain.push(payload[i])
             }
-            console.log("AA", carmain,tv,movie,anime,english,regional)
+            // console.log("AA", carmain,tv,movie,anime,english,regional)
             const media1 = [...payload].sort((a, b) => b.vote_average - a.vote_average)
             const media2 = [...media1]
             media1.length = 20
@@ -77,7 +77,7 @@ export const mediasReducer = (state = initialState, { type, payload }) => {
 
 
         case FETCH_MEDIA_REQUEST: {
-            console.log("request")
+            // console.log("request")
             return {
                 ...state,
                 isLoading: true,
@@ -86,7 +86,7 @@ export const mediasReducer = (state = initialState, { type, payload }) => {
         }
 
         case FETCH_MEDIA_SUCCESS: {
-            console.log(payload)
+            // console.log(payload)
             const genre = []
             const genres = [{
                 "id": 28,
@@ -237,7 +237,7 @@ export const mediasReducer = (state = initialState, { type, payload }) => {
                     }
                 }
             }
-            console.log(genre)
+            // console.log(genre)
             return {
                 ...state,
                 currmedia: payload,
@@ -246,7 +246,7 @@ export const mediasReducer = (state = initialState, { type, payload }) => {
         }
 
         case FETCH_MEDIA_SUCCESS2: {
-            console.log(payload)
+            // console.log(payload)
             var directors = []
             var actors = []
             for (var i = 0; i < payload.cast.length; i++) {
@@ -261,7 +261,7 @@ export const mediasReducer = (state = initialState, { type, payload }) => {
             actors = [...new Set(actors)]
 
             actors.length = 5
-            console.log(actors, directors)
+            // console.log(actors, directors)
 
             return {
                 ...state,
@@ -272,7 +272,7 @@ export const mediasReducer = (state = initialState, { type, payload }) => {
         }
 
         case FETCH_MEDIA_SUCCESS3: {
-            console.log(payload)
+            // console.log(payload)
             var episodes = []
 
             for (var i = 0; i < payload.episodes.length; i++) {
@@ -284,7 +284,7 @@ export const mediasReducer = (state = initialState, { type, payload }) => {
                 }
                 episodes.push(temp)
             }
-            console.log(episodes)
+            // console.log(episodes)
 
             return {
                 ...state,
@@ -299,65 +299,7 @@ export const mediasReducer = (state = initialState, { type, payload }) => {
                 isLoading: false
             }
 
-        // case ADD_TO_CART: {
-        //     const cart = state.cart
-        //     console.log(payload)
-        //     var flag = false
-        //     if (cart.length == 0) {
-        //         console.log("1")
-        //         payload.quantity = 1
-        //         flag = true
-        //         return {
-        //             ...state,
-        //             cart: [payload]
-        //         }
-
-        //     }
-        //     else {
-        //         for (var i = 0; i < state.cart.length; i++) {
-        //             console.log("2")
-        //             if (payload._id == state.cart[i]._id) {
-        //                 flag = true
-        //                 cart[i].quantity++
-        //                 return {
-        //                     ...state,
-        //                     cart: [...cart]
-        //                 }
-        //             }
-        //         }
-        //         if (flag == false) {
-        //             console.log("3")
-        //             payload.quantity = 1
-        //             return {
-        //                 ...state,
-        //                 cart: [...cart, payload]
-        //             }
-        //         }
-        //     }
-        //     console.log(cart)
-        // }
-        // case REMOVE_FROM_CART:
-        //     const cart = state.cart
-        //     for (var i = 0; i < cart.length; i++) {
-        //         if (payload == cart[i]._id) {
-        //             cart[i].quantity--
-        //             if (cart[i].quantity == 0) cart.splice(i, 1)
-        //         }
-        //     }
-        //     return {
-        //         ...state,
-        //         cart: [...cart],
-        //         error: true,
-        //         isLoading: false
-        //     }
-
-        // case CLEAR_CART: {
-        //     console.log("object54564")
-        //     return {
-        //         ...state,
-        //         cart: []
-        //     }
-        // }
+      
 
 
 

@@ -46,7 +46,7 @@ export function Watchlist() {
               alt="add watchlist"
             />
             <h3 className={styles.container_subheading}>
-              Your Watchlist Currently Empty
+              Your Watchlist is Empty
             </h3>
             <div className={styles.container_footer}>
               Add &nbsp;
@@ -68,14 +68,14 @@ export function Watchlist() {
     );
 
   return (
-    <Grid container spacing={1} style={{ border: "1px solid white" }}>
+    <div><h1 style={{marginLeft:"0px"}}>Your Watchlist</h1>
+    <Grid container spacing={1} style={{ border: "1px solid white", height:"100vh" }}>
       {userdata &&
         userdata.fav.length > 0 &&
         userdata.fav.map((item) => (
           <Grid item xs={6} sm={4} md={3} lg={3} xl={2} spacing={3}>
             <div
-              className={styles.Slide}
-              onMouseEnter={(item) => console.log("asd", item._id)}
+              className={styles.Slide}             
               key={item._id}
               style={{ margin: "20px" }}
               onClick={() => handleClick(item._id)}>
@@ -178,5 +178,6 @@ export function Watchlist() {
           </Grid>
         ))}
     </Grid>
+    </div>
   );
 }

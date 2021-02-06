@@ -15,7 +15,7 @@ export const BannerCarousel = (props) => {
     const dispatch = useDispatch()
     const main = useSelector(state => state.medias.main)    
     SwiperCore.use([Navigation, Pagination, Autoplay, EffectFade])
-    console.log(main)
+    // console.log(main)
 
   
     const handleClick = (id) => {

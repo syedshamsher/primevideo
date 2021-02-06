@@ -5,6 +5,7 @@ import { TwoRowedCarousel } from '../../Components/TwoRowedCarousel/TwoRowedCaro
 import { fetchAllMedias } from '../../Redux/MediaRedux/actions'
 import { useSelector } from "react-redux"
 import { useDispatch } from "react-redux"
+import Loading from "../../Components/Loading/Loading"
 
 export const Feed = () => {
     const dispatch = useDispatch()
@@ -17,15 +18,15 @@ export const Feed = () => {
     const anime = useSelector(state => state.medias.anime)
     const english = useSelector(state => state.medias.english)
     const regional = useSelector(state => state.medias.regional)
-    console.log(media,tv,movie,anime,english,regional)
+    // console.log(media,tv,movie,anime,english,regional)
 
     React.useEffect(() => {
-        console.log("Calling")
+        // console.log("Calling")
         dispatch(fetchAllMedias())
     }, [])
 
 
-    if (isLoading) return <div>Loading...</div> 
+    if (isLoading) return <Loading></Loading> 
 
     return (
         <div style={{height:"max-content", background:"#0F171E", display:"flex", flexDirection:"column"}}>

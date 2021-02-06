@@ -3,7 +3,6 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { useHistory } from "react-router-dom";
-
 import PlayArrowOutlined from "@material-ui/icons/PlayArrowOutlined";
 import HelpOutlineIcon from "@material-ui/icons/HelpOutline";
 import ShareIcon from "@material-ui/icons/Share";
@@ -14,6 +13,7 @@ import { fetchMedia } from "../../Redux/MediaRedux/actions";
 import styles from "./styles.module.css";
 import { getActiveUser, newWatchList } from "../../Redux/user/actions";
 import { Feedback } from "../../Components/Feedback/Feedback";
+import Loading from "../../Components/Loading/Loading"
 
 const ViewMedia = () => {
   const { id } = useParams();
@@ -64,8 +64,9 @@ const ViewMedia = () => {
   function truncate(str, n) {
     return str?.length > n ? str.substr(0, n - 1) + "..." : str;
   }
-  const handleClick = () => {
-    history.push(`/player/song2`);
+  const handleClick = (videotitle) => {
+      console.log(videotitle)
+    history.push(`/player/${videotitle}`);
   };
 
   const handleAdd = (payload) => {
@@ -74,7 +75,7 @@ const ViewMedia = () => {
     setAdded(!added);
   };
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <Loading></Loading> 
   else
     return (
       <>
@@ -188,7 +189,7 @@ const ViewMedia = () => {
                       textAlign: "center",
                     }}>
                     <div
-                      onClick={handleClick}
+                      onClick={()=>handleClick("soul")}
                       className={styles.banner_btn_active}>
                       <PlayArrowOutlined
                         fontSize="large"
@@ -248,6 +249,7 @@ const ViewMedia = () => {
                   display: "flex",
                   justifyContent: "space-between",
                   marginTop: "50px",
+                  zIndex:1000
                 }}>
                 <div
                   style={{
@@ -388,7 +390,7 @@ const ViewMedia = () => {
                       textAlign: "center",
                     }}>
                     <div
-                      onClick={handleClick}
+                      onClick={()=>handleClick("TR1")}
                       className={styles.banner_btn_active}>
                       <PlayArrowOutlined
                         fontSize="large"
@@ -396,7 +398,7 @@ const ViewMedia = () => {
                       />
                       <div>Play</div>
                     </div>
-                    <div onClick={handleClick} className={styles.banner_btn}>
+                    <div onClick={()=>handleClick("TR1")} className={styles.banner_btn}>
                       <PlayArrowOutlined fontSize="large" />
                       <div>Watch Trailer</div>
                     </div>
@@ -677,7 +679,7 @@ const ViewMedia = () => {
                       textAlign: "center",
                     }}>
                     <div
-                      onClick={handleClick}
+                      onClick={()=>handleClick("TR2")}
                       className={styles.banner_btn_active}>
                       <PlayArrowOutlined
                         fontSize="large"
@@ -685,7 +687,7 @@ const ViewMedia = () => {
                       />
                       <div>Play</div>
                     </div>
-                    <div onClick={handleClick} className={styles.banner_btn}>
+                    <div onClick={()=>handleClick("TR2")} className={styles.banner_btn}>
                       <PlayArrowOutlined fontSize="large" />
                       <div>Watch Trailer</div>
                     </div>

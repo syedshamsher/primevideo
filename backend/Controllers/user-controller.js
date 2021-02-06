@@ -10,7 +10,7 @@ const getUser = (req, res) => {
 };
 
 const addUser = async (req, res, next) => {
-  console.log(req.body);
+  
   const { error } = registerValidation(req.body);
   if (error) {
     return res.status(400).json(error.details[0].message);
@@ -58,7 +58,7 @@ const getUserById = (req, res) => {
 
 
 const userLogin = async (req, res, next) => {
-  console.log("asdas", req.body);
+  // console.log("asdas", req.body);
   const email = req.body.email;
   const password = req.body.password;
 
@@ -87,7 +87,7 @@ const userLogin = async (req, res, next) => {
 };
 
 const updateFavList = async (req, res) => {
-  console.log(req.body.mediaId);
+  // console.log(req.body.mediaId);
   let id = req.body.id;
   let mediaId = req.body.mediaId;
   let temp = [];
@@ -104,11 +104,11 @@ const updateFavList = async (req, res) => {
       return el;
     }
   });
-  console.log("count", count);
+  // console.log("count", count);
   if (count == 0) {
     temp.push(mediaId);
   }
-  console.log("temp", temp);
+  // console.log("temp", temp);
   Users.findOneAndUpdate({ _id: id }, { fav: temp }).then((data) =>
     res.status(200).json(data.fav),
   );
@@ -117,11 +117,3 @@ const updateFavList = async (req, res) => {
 
 module.exports = { getUser, addUser, userLogin, updateFavList ,getUserById};
 
-// const updateFavList = (req, res) => {
-//   console.log(req.body);
-//   let id = req.body.id;
-//   let list = req.body.watchlist;
-//   Users.findOneAndUpdate({ _id: id }, { fav: list }).then((data) =>
-//     res.status(200).json(data),
-//   );
-// };
