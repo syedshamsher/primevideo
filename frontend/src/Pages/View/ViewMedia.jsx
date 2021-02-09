@@ -13,7 +13,7 @@ import { fetchMedia } from "../../Redux/MediaRedux/actions";
 import styles from "./styles.module.css";
 import { getActiveUser, newWatchList } from "../../Redux/user/actions";
 import { Feedback } from "../../Components/Feedback/Feedback";
-import Loading from "../../Components/Loading/Loading"
+import Loading from "../../Components/Loading/Loading";
 
 const ViewMedia = () => {
   const { id } = useParams();
@@ -21,14 +21,12 @@ const ViewMedia = () => {
   const userData = useSelector((state) => state.auth.userdata);
   const media = useSelector((state) => state.medias.currmedia);
   const cast = useSelector((state) => state.medias.cast);
-  console.log(truncate(cast.join(), 30));
   const crew = useSelector((state) => state.medias.crew);
   const episodes = useSelector((state) => state.medias.episodes);
   const genre = useSelector((state) => state.medias.genre);
-  console.log(id, isLoading, media);
+  const { watchlist, isAuth } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const history = useHistory();
-  console.log(userData);
   const [added, setAdded] = React.useState(false);
   const [open, setOpen] = useState(false);
   const handleClose = () => {
@@ -47,35 +45,30 @@ const ViewMedia = () => {
     dispatch(getActiveUser());
   }, []);
 
-  React.useEffect(() => {
-    console.log("Calling");
-    if (userData && userData.fav.length > 0) {
-      for (var i = 0; i < userData.fav.length; i++) {
-        console.log("object", userData.fav[i]._id);
-        if (userData.fav[i]._id == media._id) {
-          setAdded(true);
-          break;
-        }
+  function check(id) {
+    console.log("Check function");
+    if (isAuth && watchlist.length > 0) {
+      for (let i = 0; i < watchlist.length; i++) {
+        if (watchlist[i]._id === id) return true;
       }
     }
-    console.log(added);
-  }, [added]);
+    return false;
+  }
 
   function truncate(str, n) {
     return str?.length > n ? str.substr(0, n - 1) + "..." : str;
   }
   const handleClick = (videotitle) => {
-      console.log(videotitle)
+    // console.log(videotitle);
     history.push(`/player/${videotitle}`);
   };
 
   const handleAdd = (payload) => {
-    console.log(userData._id, payload);
+    // console.log(userData._id, payload);
     dispatch(newWatchList({ id: userData._id, mediaId: payload }));
-    setAdded(!added);
   };
 
-  if (isLoading) return <Loading></Loading> 
+  if (isLoading) return <Loading></Loading>;
   else
     return (
       <>
@@ -189,7 +182,7 @@ const ViewMedia = () => {
                       textAlign: "center",
                     }}>
                     <div
-                      onClick={()=>handleClick("soul")}
+                      onClick={() => handleClick("soul")}
                       className={styles.banner_btn_active}>
                       <PlayArrowOutlined
                         fontSize="large"
@@ -205,7 +198,9 @@ const ViewMedia = () => {
                       onClick={() => handleAdd(media)}
                       className={styles.banner_btn_add}>
                       <div>
-                        {added ? "Remove From Watchlist" : "Add to WatchList"}
+                        {check(media._id)
+                          ? "Remove From Watchlist"
+                          : "Add to WatchList"}
                       </div>
                     </div>
                     <div
@@ -249,7 +244,7 @@ const ViewMedia = () => {
                   display: "flex",
                   justifyContent: "space-between",
                   marginTop: "50px",
-                  zIndex:1000
+                  zIndex: 1000,
                 }}>
                 <div
                   style={{
@@ -390,7 +385,7 @@ const ViewMedia = () => {
                       textAlign: "center",
                     }}>
                     <div
-                      onClick={()=>handleClick("TR1")}
+                      onClick={() => handleClick("TR1")}
                       className={styles.banner_btn_active}>
                       <PlayArrowOutlined
                         fontSize="large"
@@ -398,7 +393,9 @@ const ViewMedia = () => {
                       />
                       <div>Play</div>
                     </div>
-                    <div onClick={()=>handleClick("TR1")} className={styles.banner_btn}>
+                    <div
+                      onClick={() => handleClick("TR1")}
+                      className={styles.banner_btn}>
                       <PlayArrowOutlined fontSize="large" />
                       <div>Watch Trailer</div>
                     </div>
@@ -406,7 +403,9 @@ const ViewMedia = () => {
                       onClick={() => handleAdd(media)}
                       className={styles.banner_btn_add}>
                       <div>
-                        {added ? "Remove From Watchlist" : "Add to WatchList"}
+                        {check(media._id)
+                          ? "Remove From Watchlist"
+                          : "Add to WatchList"}
                       </div>
                     </div>
                     <div
@@ -679,7 +678,7 @@ const ViewMedia = () => {
                       textAlign: "center",
                     }}>
                     <div
-                      onClick={()=>handleClick("TR2")}
+                      onClick={() => handleClick("TR2")}
                       className={styles.banner_btn_active}>
                       <PlayArrowOutlined
                         fontSize="large"
@@ -687,7 +686,9 @@ const ViewMedia = () => {
                       />
                       <div>Play</div>
                     </div>
-                    <div onClick={()=>handleClick("TR2")} className={styles.banner_btn}>
+                    <div
+                      onClick={() => handleClick("TR2")}
+                      className={styles.banner_btn}>
                       <PlayArrowOutlined fontSize="large" />
                       <div>Watch Trailer</div>
                     </div>
@@ -695,7 +696,9 @@ const ViewMedia = () => {
                       onClick={() => handleAdd(media)}
                       className={styles.banner_btn_add}>
                       <div>
-                        {added ? "Remove From Watchlist" : "Add to WatchList"}
+                        {check(media._id)
+                          ? "Remove From Watchlist"
+                          : "Add to WatchList"}
                       </div>
                     </div>
                     <div

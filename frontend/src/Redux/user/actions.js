@@ -7,7 +7,7 @@ import {
   LOGOUT,
   SET_REGISTER,
   ADD_WATCHLIST,
-  GET_ACTIVE_USER
+  GET_ACTIVE_USER,
 } from "./actionTypes";
 import axios from "axios";
 const loginRequest = (uname, pass) => {
@@ -45,8 +45,6 @@ const registerFailure = (error) => {
   };
 };
 
-
-
 export const logout = () => {
   return {
     type: LOGOUT,
@@ -67,10 +65,8 @@ export const updateWatchList = (payload) => {
   };
 };
 
-
-
 export const getActiveUser = () => (dispatch) => {
-  const accessToken = localStorage.getItem('accesstoken');
+  const accessToken = localStorage.getItem("accesstoken");
   axios({
     method: "GET",
     url: "http://localhost:8001/api/users",
@@ -84,10 +80,10 @@ export const getActiveUser = () => (dispatch) => {
       return true;
     })
     .catch((res) => {
-      console.log("error", res.response.data);
-      dispatch(loginFailure(res.response.data));
+      console.log("error", res.response);
+      dispatch(loginFailure(res.response));
     });
-}
+};
 
 export const Loginreq = (email, pass) => (dispatch) => {
   dispatch(loginRequest(email, pass));
@@ -103,7 +99,7 @@ export const Loginreq = (email, pass) => (dispatch) => {
   return axios(config)
     .then((res) => {
       console.log(res.data.accesstoken);
-      localStorage.setItem('accesstoken', res.data.accesstoken)
+      localStorage.setItem("accesstoken", res.data.accesstoken);
       return axios({
         method: "GET",
         url: "http://localhost:8001/api/users",
@@ -149,9 +145,6 @@ export const Regreq = (payload) => (dispatch) => {
     });
 };
 
-
-
-
 export const newWatchList = (payload) => (dispatch) => {
   // dispatch(tempupdate(payload))
   var config = {
@@ -166,7 +159,7 @@ export const newWatchList = (payload) => (dispatch) => {
   axios(config)
     .then(function (response) {
       dispatch(updateWatchList(response.data));
-      dispatch(getActiveUser())
+      dispatch(getActiveUser());
     })
     .catch(function (error) {
       console.log(error);

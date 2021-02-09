@@ -107,7 +107,7 @@ app.post("/capture/:paymentId", (req, res) => {
             }
           })
           .catch((err) => {
-             console.log(err);
+            console.log(err);
             return res.status(404).json("Error:" + err);
           });
       },
