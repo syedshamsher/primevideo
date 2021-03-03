@@ -27,18 +27,18 @@ const ViewMedia = () => {
   const { watchlist, isAuth } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const history = useHistory();
-  const [added, setAdded] = React.useState(false);
+  // const [added, setAdded] = React.useState(false);
   const [open, setOpen] = useState(false);
   const handleClose = () => {
     setOpen(false);
   };
   var language = "";
-  if (media.original_language == "ja") language = "Japanese";
-  if (media.original_language == "en") language = "English";
-  if (media.original_language == "hi") language = "Hindi";
-  if (media.original_language == "ml") language = "Malayalam";
-  if (media.original_language == "ta") language = "Tamil";
-  if (media.original_language == "ru") language = "Russian";
+  if (media.original_language === "ja") language = "Japanese";
+  if (media.original_language === "en") language = "English";
+  if (media.original_language === "hi") language = "Hindi";
+  if (media.original_language === "ml") language = "Malayalam";
+  if (media.original_language === "ta") language = "Tamil";
+  if (media.original_language === "ru") language = "Russian";
 
   React.useEffect(() => {
     dispatch(fetchMedia(id));
@@ -73,7 +73,7 @@ const ViewMedia = () => {
     return (
       <>
         {/* for Soul */}
-        {media.media_type === "movie" && media.original_title == "Soul" && (
+        {media.media_type === "movie" && media.original_title === "Soul" && (
           <div>
             <header
               className={styles.banner}
@@ -306,7 +306,7 @@ const ViewMedia = () => {
           </div>
         )}
         {/* for series */}
-        {media.media_type == "tv" && (
+        {media.media_type === "tv" && (
           <div>
             <header
               className={styles.banner}
@@ -598,7 +598,7 @@ const ViewMedia = () => {
             </div>
           </div>
         )}
-        {media.media_type === "movie" && media.original_title != "Soul" && (
+        {media.media_type === "movie" && media.original_title !== "Soul" && (
           <div>
             <header
               className={styles.banner}

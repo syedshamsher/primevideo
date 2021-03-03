@@ -2,8 +2,8 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { searchQuery } from "../../Redux/Search/actions";
-import { makeStyles } from "@material-ui/core/styles";
-import Paper from "@material-ui/core/Paper";
+// import { makeStyles } from "@material-ui/core/styles";
+// import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import styles from "./SearchResult.module.css";
 import PlayCircleFilledWhiteIcon from "@material-ui/icons/PlayCircleFilledWhite";
@@ -13,25 +13,25 @@ import SpeakerNotesIcon from "@material-ui/icons/SpeakerNotes";
 import RemoveCircleOutlineIcon from "@material-ui/icons/RemoveCircleOutline";
 import { newWatchList } from "../../Redux/user/actions";
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
-  paper: {
-    padding: theme.spacing(2),
-    textAlign: "center",
-    color: theme.palette.text.secondary,
-  },
-}));
+// const useStyles = makeStyles((theme) => ({
+//   root: {
+//     flexGrow: 1,
+//   },
+//   paper: {
+//     padding: theme.spacing(2),
+//     textAlign: "center",
+//     color: theme.palette.text.secondary,
+//   },
+// }));
 
 export function SearchResult(props) {
   const { searched } = useSelector((state) => state.search);
-  const { isAuth, userdata, watchlist } = useSelector((state) => state.auth);
+  const { userdata, watchlist } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const history = useHistory();
-  let path = null;
+  // let path = null;
 
-  const classes = useStyles();
+  // const classes = useStyles();
 
   const handleAdd = (payload) => {
     // console.log(userData._id, payload);
@@ -57,10 +57,10 @@ export function SearchResult(props) {
     history.push(`/media/${id}`);
   };
 
-  const handleClick1 = (id, e) => {
-    history.push(`/player/song2`);
-    e.stopPropagation();
-  };
+  // const handleClick1 = (id, e) => {
+  //   history.push(`/player/song2`);
+  //   e.stopPropagation();
+  // };
 
   function truncate(str, n) {
     return str?.length > n ? str.substr(0, n - 1) + "..." : str;

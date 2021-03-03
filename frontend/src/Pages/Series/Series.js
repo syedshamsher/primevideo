@@ -11,18 +11,18 @@ export const Series = () => {
   const dispatch = useDispatch();
   const isLoading = useSelector((state) => state.medias.isLoading);
   const main = useSelector((state) => state.medias.main);
-  const media = useSelector((state) => state.medias.medias);
+  // const media = useSelector((state) => state.medias.medias);
   const media1 = useSelector((state) => state.medias.media1);
   const tv = useSelector((state) => state.medias.tv);
-  const movie = useSelector((state) => state.medias.movie);
-  const anime = useSelector((state) => state.medias.anime);
+  // const movie = useSelector((state) => state.medias.movie);
+  // const anime = useSelector((state) => state.medias.anime);
   const english = useSelector((state) => state.medias.english);
   const regional = useSelector((state) => state.medias.regional);
-  const TV1 = main.filter((item) => item.media_type == "tv");
-  const TVtrend = tv.filter((item) => item.media_type == "tv");
-  const TVtop = media1.filter((item) => item.media_type == "tv");
-  const TVen = english.filter((item) => item.media_type == "tv");
-  const TVreg = regional.filter((item) => item.media_type == "tv");
+  const TV1 = main.filter((item) => item.media_type === "tv");
+  const TVtrend = tv.filter((item) => item.media_type === "tv");
+  const TVtop = media1.filter((item) => item.media_type === "tv");
+  const TVen = english.filter((item) => item.media_type === "tv");
+  const TVreg = regional.filter((item) => item.media_type === "tv");
   const { watchlist, userdata } = useSelector((state) => state.auth);
   // console.log(media,tv,movie,anime,english,regional)
 

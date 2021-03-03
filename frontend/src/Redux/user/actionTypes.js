@@ -9,3 +9,4 @@ export const SET_REGISTER = "SET_REGISTER";
 export const ADD_WATCHLIST = "ADD_WATCHLIST";
 export const GET_ACTIVE_USER = "GET_ACTIVE_USER";
 export const TEMP_UPDATE = "TEMP_UPDATE";
+export const RESET = "RESET";

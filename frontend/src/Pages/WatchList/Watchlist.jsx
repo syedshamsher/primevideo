@@ -100,6 +100,7 @@ export function Watchlist() {
                   height="200px"
                   style={{ width: "300px", objectFit: "contain" }}
                   onClick={() => handleClick(item._id)}
+                  alt="poster"
                 />
                 <div className={styles.hidden}>
                   <div

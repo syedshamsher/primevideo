@@ -7,7 +7,8 @@ import {
   LOGOUT,
   SET_REGISTER,
   ADD_WATCHLIST,
-  GET_ACTIVE_USER,
+  // GET_ACTIVE_USER,
+  RESET,
 } from "./actionTypes";
 import axios from "axios";
 const loginRequest = (uname, pass) => {
@@ -65,6 +66,12 @@ export const updateWatchList = (payload) => {
   };
 };
 
+export const resetError = () => {
+  return {
+    type: RESET,
+  };
+};
+
 export const getActiveUser = () => (dispatch) => {
   const accessToken = localStorage.getItem("accesstoken");
   axios({
@@ -81,7 +88,7 @@ export const getActiveUser = () => (dispatch) => {
     })
     .catch((res) => {
       console.log("error", res.response);
-      dispatch(loginFailure(res.response));
+      // dispatch(loginFailure(res.response));
     });
 };
 
