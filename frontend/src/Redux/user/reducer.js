@@ -6,9 +6,9 @@ import {
   REGISTER_SUCCESS,
   REGISTER_FAILURE,
   LOGOUT,
-
   SET_REGISTER,
   ADD_WATCHLIST,
+  RESET,
 } from "./actionTypes";
 
 const initState = {
@@ -30,7 +30,7 @@ export const authReducer = (state = initState, { type, payload }) => {
       return {
         ...state,
         loading: true,
-        error: null,
+        error: false,
         isAuth: false,
       };
     }
@@ -41,7 +41,7 @@ export const authReducer = (state = initState, { type, payload }) => {
         isAuth: true,
         userType: payload.type,
         userdata: payload,
-        error: null,
+        error: false,
         watchlist: payload.fav,
       };
     }
@@ -61,7 +61,7 @@ export const authReducer = (state = initState, { type, payload }) => {
         ...state,
         isAuth: false,
         loading: true,
-        error: null,
+        error: false,
       };
     }
     case REGISTER_SUCCESS: {
@@ -69,7 +69,7 @@ export const authReducer = (state = initState, { type, payload }) => {
         ...state,
         isAuth: true,
         userdata: payload,
-        error: null,
+        error: false,
       };
     }
 
@@ -79,13 +79,13 @@ export const authReducer = (state = initState, { type, payload }) => {
         status: payload,
         error: true,
         errormsg: payload,
-        userdata:null,
+        userdata: null,
         isAuth: false,
       };
     }
 
     case LOGOUT: {
-      localStorage.removeItem('accesstoken')
+      localStorage.removeItem("accesstoken");
       return {
         ...state,
         isAuth: false,
@@ -94,8 +94,6 @@ export const authReducer = (state = initState, { type, payload }) => {
         watchlist: [],
       };
     }
-
- 
 
     case SET_REGISTER: {
       return {
@@ -107,6 +105,13 @@ export const authReducer = (state = initState, { type, payload }) => {
       return {
         ...state,
         watchlist: payload,
+      };
+    }
+    case RESET: {
+      return {
+        ...state,
+        error: false,
+        errormsg: "",
       };
     }
 

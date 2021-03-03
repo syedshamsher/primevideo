@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import LoginRegister from "../../Layout/LoginRegister/LoginRegister";
 import styles from "./Register.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { Regreq, setRegister } from "../../Redux/user/actions";
+import { Regreq, resetError, setRegister } from "../../Redux/user/actions";
 import Alert from "@material-ui/lab/Alert";
 import { useHistory } from "react-router-dom";
 import Snackbar from "@material-ui/core/Snackbar";
@@ -16,7 +16,7 @@ export const Register = () => {
   const [checker, setChecker] = useState(true);
   const dispatch = useDispatch();
   const history = useHistory();
-  const { registered } = useSelector((state) => state.auth);
+  const { registered, errormsg, error } = useSelector((state) => state.auth);
   let [vertical, horizontal] = ["top", "center"];
 
   useEffect(() => {
@@ -42,8 +42,25 @@ export const Register = () => {
     else setChecker(false);
   };
 
+  const handleError = () => {
+    setTimeout(() => {
+      dispatch(resetError());
+    }, 3000);
+  };
+
   return (
     <LoginRegister>
+      {error && (
+        <Snackbar anchorOrigin={{ vertical, horizontal }} open="true">
+          <Alert
+            className={styles.alert_success}
+            variant="filled"
+            severity="error">
+            {errormsg}
+            {handleError()}
+          </Alert>
+        </Snackbar>
+      )}
       {registered && (
         <Snackbar anchorOrigin={{ vertical, horizontal }} open="true">
           <Alert
@@ -101,7 +118,9 @@ export const Register = () => {
             />
           </div>
           <div>
-            {!checker ? <div>Password does not match, Please retry!</div> : null}
+            {!checker ? (
+              <div>Password does not match, Please retry!</div>
+            ) : null}
             <button
               className={styles.btn_primary}
               onClick={handleSubmit}
@@ -112,18 +131,24 @@ export const Register = () => {
           <div className={styles.form_term_policy}>
             By continuing, you agree to Amazon's{` `}
             <span>
-              <a style={{color: "blue"}} href="/">Conditions of Use</a>
+              <a style={{ color: "blue" }} href="/">
+                Conditions of Use
+              </a>
             </span>
             {` `}and{` `}
             <span>
-              <a style={{color: "blue"}} href="/">Privacy Notice</a>
+              <a style={{ color: "blue" }} href="/">
+                Privacy Notice
+              </a>
             </span>
             .
           </div>
           <div className={styles.form_footer}>
             Already have a account?
             <span>
-              <a style={{color: "blue"}} href="/login">Sign-In </a>
+              <a style={{ color: "blue" }} href="/login">
+                Sign-In{" "}
+              </a>
             </span>
           </div>
         </Box>
